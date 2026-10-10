@@ -1,9 +1,8 @@
 // ===== إعدادات النشاط — عدّل هنا فقط / Business config — edit here only =====
 const CONFIG = {
   whatsapp: '201147049045', // +201147049045 — الصيغة الدولية بدون + / international format, no +
-  instagram: 'https://instagram.com/',
-  facebook: 'https://facebook.com/',
-  tiktok: 'https://tiktok.com/'
+  instagram: 'https://www.instagram.com/yaagencyofficial/',
+  facebook: 'https://web.facebook.com/yaagencyofficial'
 };
 
 const I18N = {
@@ -24,8 +23,8 @@ const I18N = {
     'home.w3t': 'تقارير شفافة', 'home.w3d': 'نتابعك بتقارير واضحة عن أداء الحملات والنتائج.',
     'home.ctat': 'جاهز تكبّر نشاطك التجاري؟', 'home.ctap': 'احجز استشارة مجانية وخلّينا نبدأ خطة النمو الخاصة بك.',
     'srv.title': 'خدماتنا', 'srv.sub': 'كل ما تحتاجه لتسويق نشاطك التجاري في مكان واحد.',
-    's1t': 'إدارة السوشيال ميديا', 's1d': 'إدارة حساباتك على إنستجرام وفيسبوك وتيك توك بمحتوى منتظم وجذاب.',
-    's2t': 'الإعلانات المدفوعة', 's2d': 'حملات ممولة على ميتا وتيك توك وجوجل تستهدف العميل المناسب بأقل تكلفة.',
+    's1t': 'إدارة السوشيال ميديا', 's1d': 'إدارة حساباتك على إنستجرام وفيسبوك بمحتوى منتظم وجذاب.',
+    's2t': 'الإعلانات المدفوعة', 's2d': 'حملات ممولة على ميتا وجوجل تستهدف العميل المناسب بأقل تكلفة.',
     's3t': 'صناعة المحتوى', 's3d': 'تصوير وفيديوهات قصيرة وريلز وتصميم بوستات تعبّر عن هوية علامتك.',
     's4t': 'الهوية البصرية', 's4d': 'لوجو وألوان وهوية متكاملة تجعل علامتك مميزة ومتناسقة.',
     's5t': 'تحسين محركات البحث SEO', 's5d': 'نرفع ترتيب موقعك في جوجل ونزيد الزيارات المجانية.',
@@ -67,8 +66,8 @@ const I18N = {
     'home.w3t': 'Transparent reporting', 'home.w3d': 'Clear reports on campaign performance and results.',
     'home.ctat': 'Ready to grow your business?', 'home.ctap': 'Book a free consultation and let’s start your growth plan.',
     'srv.title': 'Our Services', 'srv.sub': 'Everything you need to market your business, in one place.',
-    's1t': 'Social media management', 's1d': 'We run your Instagram, Facebook and TikTok with consistent, engaging content.',
-    's2t': 'Paid advertising', 's2d': 'Meta, TikTok and Google campaigns that target the right customer at the lowest cost.',
+    's1t': 'Social media management', 's1d': 'We run your Instagram and Facebook with consistent, engaging content.',
+    's2t': 'Paid advertising', 's2d': 'Meta and Google campaigns that target the right customer at the lowest cost.',
     's3t': 'Content creation', 's3d': 'Photography, short videos, reels and post designs that express your brand.',
     's4t': 'Brand identity', 's4d': 'Logo, colours and a complete identity that makes your brand distinctive.',
     's5t': 'SEO', 's5d': 'We raise your Google ranking and grow free traffic.',
@@ -115,7 +114,7 @@ function buildChrome() {
   <footer class="site-footer"><div class="container">
     <div class="foot"><div><a class="brand" href="index.html"><img src="assets/img/logo.png" alt="" width="36" height="36"><span data-i18n="brand"></span></a><p data-i18n="ft.tag" style="margin-top:8px"></p></div>
     <div class="foot-links">${links.map(([h, k]) => `<a href="${h}" data-i18n="${k}"></a>`).join('')}</div>
-    <div class="foot-links"><a href="${CONFIG.instagram}" target="_blank" rel="noopener">Instagram</a><a href="${CONFIG.facebook}" target="_blank" rel="noopener">Facebook</a><a href="${CONFIG.tiktok}" target="_blank" rel="noopener">TikTok</a></div></div>
+    <div class="foot-links"><a href="${CONFIG.instagram}" target="_blank" rel="noopener">Instagram</a><a href="${CONFIG.facebook}" target="_blank" rel="noopener">Facebook</a></div></div>
     <p class="copy">© <span id="yr"></span> YA Marketing Agency — <span data-i18n="ft.rights"></span></p></div></footer>
   <a class="wa-float" href="https://wa.me/${CONFIG.whatsapp}" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>`;
   document.getElementById('yr').textContent = new Date().getFullYear();
