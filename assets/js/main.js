@@ -1,9 +1,8 @@
 // ===== إعدادات النشاط — عدّل هنا فقط / Business config — edit here only =====
 const CONFIG = {
-  whatsapp: '201000000000', // رقم الواتساب بالصيغة الدولية بدون + / international format, no +
-  instagram: 'https://instagram.com/',
-  facebook: 'https://facebook.com/',
-  tiktok: 'https://tiktok.com/'
+  whatsapp: '201147049045', // +201147049045 — الصيغة الدولية بدون + / international format, no +
+  instagram: 'https://www.instagram.com/yaagencyofficial/',
+  facebook: 'https://web.facebook.com/yaagencyofficial'
 };
 
 const I18N = {
@@ -24,22 +23,31 @@ const I18N = {
     'home.w3t': 'تقارير شفافة', 'home.w3d': 'نتابعك بتقارير واضحة عن أداء الحملات والنتائج.',
     'home.ctat': 'جاهز تكبّر نشاطك التجاري؟', 'home.ctap': 'احجز استشارة مجانية وخلّينا نبدأ خطة النمو الخاصة بك.',
     'srv.title': 'خدماتنا', 'srv.sub': 'كل ما تحتاجه لتسويق نشاطك التجاري في مكان واحد.',
-    's1t': 'إدارة السوشيال ميديا', 's1d': 'إدارة حساباتك على إنستجرام وفيسبوك وتيك توك بمحتوى منتظم وجذاب.',
-    's2t': 'الإعلانات المدفوعة', 's2d': 'حملات ممولة على ميتا وتيك توك وجوجل تستهدف العميل المناسب بأقل تكلفة.',
+    's1t': 'إدارة السوشيال ميديا', 's1d': 'إدارة حساباتك على إنستجرام وفيسبوك بمحتوى منتظم وجذاب.',
+    's2t': 'الإعلانات المدفوعة', 's2d': 'حملات ممولة على ميتا وجوجل تستهدف العميل المناسب بأقل تكلفة.',
     's3t': 'صناعة المحتوى', 's3d': 'تصوير وفيديوهات قصيرة وريلز وتصميم بوستات تعبّر عن هوية علامتك.',
     's4t': 'الهوية البصرية', 's4d': 'لوجو وألوان وهوية متكاملة تجعل علامتك مميزة ومتناسقة.',
     's5t': 'تحسين محركات البحث SEO', 's5d': 'نرفع ترتيب موقعك في جوجل ونزيد الزيارات المجانية.',
     's6t': 'تصميم المواقع والصفحات', 's6d': 'مواقع وصفحات هبوط سريعة ومتجاوبة مصممة لتحويل الزائر إلى عميل.',
     'srv.list1': 'خطة محتوى شهرية', 'srv.list2': 'تقارير أداء', 'srv.list3': 'استهداف دقيق',
     'por.title': 'معرض أعمالنا', 'por.sub': 'نماذج من أعمالنا ونتائج حقيقية حققناها لعملائنا.',
-    'f.all': 'الكل', 'f.social': 'سوشيال ميديا', 'f.ads': 'إعلانات', 'f.brand': 'هوية',
-    'w1t': 'حملة إطلاق متجر ملابس', 'w1r': '+240% زيادة في المبيعات',
-    'w2t': 'إدارة حسابات مطعم', 'w2r': '+15K متابع خلال 3 أشهر',
-    'w3t': 'إعلانات عيادة تجميل', 'w3r': 'تكلفة العميل انخفضت 45%',
-    'w4t': 'هوية بصرية لشركة عقارات', 'w4r': 'هوية متكاملة خلال أسبوعين',
-    'w5t': 'حملة تيك توك لمنتج جديد', 'w5r': '2M مشاهدة',
-    'w6t': 'إعلانات ميتا لمتجر إلكتروني', 'w6r': 'عائد إنفاق إعلاني ×5',
-    'por.note': '* الأعمال المعروضة نماذج توضيحية — استبدلها بأعمالك الحقيقية.',
+    'f.all': 'الكل', 'f.realestate': 'عقارات', 'f.beauty': 'عيادات تجميل', 'f.dental': 'عيادات أسنان', 'f.spa': 'مساج واسترخاء', 'f.clothing': 'ملابس', 'f.finance': 'شركات تقسيط',
+    'por.title': 'معرض أعمالنا', 'por.sub': 'حملات إعلانية حققت نتائج حقيقية في أكثر من مجال.',
+    'c.realestate': 'حملات إعلانية — عقارات', 'c.beauty': 'حملات إعلانية — عيادات التجميل', 'c.dental': 'حملات إعلانية — عيادات الأسنان',
+    'c.spa': 'حملات إعلانية — مراكز الاسترخاء والمساج', 'c.clothing': 'حملات إعلانية — الملابس', 'c.finance': 'حملات إعلانية — شركات التقسيط',
+    'd.realestate': 'حملات لتوليد عملاء مهتمين بالوحدات السكنية والتجارية وزيادة حجوزات المعاينة.',
+    'd.beauty': 'حملات تستهدف العملاء المهتمين بالجلسات والإجراءات التجميلية وتزيد الحجوزات.',
+    'd.dental': 'حملات لزيادة حجوزات الكشف والتقويم والزراعة وتجميل الأسنان.',
+    'd.spa': 'حملات للترويج لجلسات المساج والاسترخاء وزيادة الحجوزات في أوقات الذروة.',
+    'd.clothing': 'حملات لإطلاق المجموعات الجديدة وزيادة مبيعات المتجر الإلكتروني والفروع.',
+    'd.finance': 'حملات لجذب عملاء مؤهلين لخدمات التقسيط وزيادة الطلبات المقبولة.',
+    'm.leads': 'عملاء محتملون', 'm.cpl': 'تكلفة العميل', 'm.roas': 'عائد الإنفاق', 'm.book': 'حجوزات', 'm.orders': 'طلبات',
+    'r.title': 'نتائج حقيقية من حملاتنا', 'r.sub': 'لقطات حقيقية من لوحات الإعلانات — أسماء الحملات مخفية حفاظًا على خصوصية عملائنا.',
+    'r.t.conv': 'حملات تحويلات', 'r.t.views': 'حملة زيارات صفحة الهبوط', 'r.t.clicks': 'حملة زيارات (نقرات)', 'r.t.purch': 'حملة مبيعات (عمليات شراء)',
+    'r.m.conv': 'تحويل', 'r.m.views': 'مشاهدة صفحة', 'r.m.clicks': 'نقرة', 'r.m.purch': 'عملية شراء',
+    'r.m.cpconv': 'متوسط تكلفة التحويل', 'r.m.cpv': 'تكلفة مشاهدة الصفحة', 'r.m.cpc': 'تكلفة النقرة', 'r.m.cpa': 'تكلفة الشراء', 'r.m.spend': 'الإنفاق',
+    'por.ind': 'حملاتنا حسب المجال',
+    'por.note': '* أرقام كروت المجالات توضيحية فقط — استبدلها بنتائج حملاتك الفعلية.',
     'con.title': 'تواصل معنا', 'con.sub': 'يسعدنا سماع فكرتك — راسلنا وسنرد عليك في أسرع وقت.',
     'con.info': 'طرق التواصل', 'con.wa': 'تواصل عبر واتساب',
     'con.name': 'الاسم', 'con.phone': 'رقم الهاتف', 'con.service': 'الخدمة المطلوبة', 'con.msg': 'رسالتك', 'con.send': 'إرسال عبر واتساب',
@@ -63,22 +71,31 @@ const I18N = {
     'home.w3t': 'Transparent reporting', 'home.w3d': 'Clear reports on campaign performance and results.',
     'home.ctat': 'Ready to grow your business?', 'home.ctap': 'Book a free consultation and let’s start your growth plan.',
     'srv.title': 'Our Services', 'srv.sub': 'Everything you need to market your business, in one place.',
-    's1t': 'Social media management', 's1d': 'We run your Instagram, Facebook and TikTok with consistent, engaging content.',
-    's2t': 'Paid advertising', 's2d': 'Meta, TikTok and Google campaigns that target the right customer at the lowest cost.',
+    's1t': 'Social media management', 's1d': 'We run your Instagram and Facebook with consistent, engaging content.',
+    's2t': 'Paid advertising', 's2d': 'Meta and Google campaigns that target the right customer at the lowest cost.',
     's3t': 'Content creation', 's3d': 'Photography, short videos, reels and post designs that express your brand.',
     's4t': 'Brand identity', 's4d': 'Logo, colours and a complete identity that makes your brand distinctive.',
     's5t': 'SEO', 's5d': 'We raise your Google ranking and grow free traffic.',
     's6t': 'Websites & landing pages', 's6d': 'Fast, responsive sites and landing pages built to turn visitors into customers.',
     'srv.list1': 'Monthly content plan', 'srv.list2': 'Performance reports', 'srv.list3': 'Precise targeting',
     'por.title': 'Our Work', 'por.sub': 'Samples of our work and real results we delivered for clients.',
-    'f.all': 'All', 'f.social': 'Social media', 'f.ads': 'Ads', 'f.brand': 'Branding',
-    'w1t': 'Clothing store launch campaign', 'w1r': '+240% sales increase',
-    'w2t': 'Restaurant account management', 'w2r': '+15K followers in 3 months',
-    'w3t': 'Beauty clinic ads', 'w3r': 'Cost per lead down 45%',
-    'w4t': 'Real-estate brand identity', 'w4r': 'Full identity in two weeks',
-    'w5t': 'TikTok campaign for a new product', 'w5r': '2M views',
-    'w6t': 'Meta ads for an online store', 'w6r': '5× return on ad spend',
-    'por.note': '* Works shown are illustrative samples — replace with your real projects.',
+    'f.all': 'All', 'f.realestate': 'Real estate', 'f.beauty': 'Beauty clinics', 'f.dental': 'Dental clinics', 'f.spa': 'Spa & massage', 'f.clothing': 'Clothing', 'f.finance': 'Installment companies',
+    'por.title': 'Our Work', 'por.sub': 'Ad campaigns that delivered real results across multiple industries.',
+    'c.realestate': 'Ad campaigns — Real estate', 'c.beauty': 'Ad campaigns — Beauty clinics', 'c.dental': 'Ad campaigns — Dental clinics',
+    'c.spa': 'Ad campaigns — Spa & massage centers', 'c.clothing': 'Ad campaigns — Clothing', 'c.finance': 'Ad campaigns — Installment companies',
+    'd.realestate': 'Lead-generation campaigns for residential and commercial units that boost viewing bookings.',
+    'd.beauty': 'Campaigns targeting people interested in cosmetic sessions and procedures to grow bookings.',
+    'd.dental': 'Campaigns that increase bookings for check-ups, braces, implants and cosmetic dentistry.',
+    'd.spa': 'Campaigns promoting massage and relaxation sessions and filling peak-time slots.',
+    'd.clothing': 'Campaigns for new collection launches that lift online-store and branch sales.',
+    'd.finance': 'Campaigns attracting qualified customers for installment services and more approved orders.',
+    'm.leads': 'Leads', 'm.cpl': 'Cost per lead', 'm.roas': 'ROAS', 'm.book': 'Bookings', 'm.orders': 'Orders',
+    'r.title': 'Real results from our campaigns', 'r.sub': 'Real screenshots from ad dashboards — campaign names are hidden to protect our clients’ privacy.',
+    'r.t.conv': 'Conversion campaigns', 'r.t.views': 'Landing-page traffic campaign', 'r.t.clicks': 'Traffic campaign (clicks)', 'r.t.purch': 'Sales campaign (purchases)',
+    'r.m.conv': 'Conversions', 'r.m.views': 'Landing page views', 'r.m.clicks': 'Clicks', 'r.m.purch': 'Purchases',
+    'r.m.cpconv': 'Avg. cost per conversion', 'r.m.cpv': 'Cost per page view', 'r.m.cpc': 'Cost per click', 'r.m.cpa': 'Cost per purchase', 'r.m.spend': 'Spend',
+    'por.ind': 'Our campaigns by industry',
+    'por.note': '* Industry-card figures are illustrative only — replace with your real campaign results.',
     'con.title': 'Contact Us', 'con.sub': 'We’d love to hear your idea — message us and we’ll reply as soon as possible.',
     'con.info': 'Ways to reach us', 'con.wa': 'Chat on WhatsApp',
     'con.name': 'Name', 'con.phone': 'Phone number', 'con.service': 'Service needed', 'con.msg': 'Your message', 'con.send': 'Send via WhatsApp',
@@ -96,7 +113,7 @@ function buildChrome() {
   const links = [['index.html', 'nav.home'], ['portfolio.html', 'nav.portfolio'], ['services.html', 'nav.services'], ['contact.html', 'nav.contact']];
   document.getElementById('site-header').innerHTML = `
   <header class="site-header"><div class="container nav">
-    <a class="brand" href="index.html"><img src="assets/img/logo.svg" alt="YA logo"><span data-i18n="brand"></span></a>
+    <a class="brand" href="index.html"><img src="assets/img/logo.png" alt="YA logo"><span data-i18n="brand"></span></a>
     <ul class="nav-links" id="navlinks">${links.map(([h, k]) => `<li><a href="${h}" class="${h === page ? 'active' : ''}" data-i18n="${k}"></a></li>`).join('')}</ul>
     <div class="nav-actions">
       <button class="lang-btn" id="langBtn" aria-label="Language"></button>
@@ -105,9 +122,9 @@ function buildChrome() {
     </div></div></header>`;
   document.getElementById('site-footer').innerHTML = `
   <footer class="site-footer"><div class="container">
-    <div class="foot"><div><a class="brand" href="index.html"><img src="assets/img/logo.svg" alt="" width="36" height="36"><span data-i18n="brand"></span></a><p data-i18n="ft.tag" style="margin-top:8px"></p></div>
+    <div class="foot"><div><a class="brand" href="index.html"><img src="assets/img/logo.png" alt="" width="36" height="36"><span data-i18n="brand"></span></a><p data-i18n="ft.tag" style="margin-top:8px"></p></div>
     <div class="foot-links">${links.map(([h, k]) => `<a href="${h}" data-i18n="${k}"></a>`).join('')}</div>
-    <div class="foot-links"><a href="${CONFIG.instagram}" target="_blank" rel="noopener">Instagram</a><a href="${CONFIG.facebook}" target="_blank" rel="noopener">Facebook</a><a href="${CONFIG.tiktok}" target="_blank" rel="noopener">TikTok</a></div></div>
+    <div class="foot-links"><a href="${CONFIG.instagram}" target="_blank" rel="noopener">Instagram</a><a href="${CONFIG.facebook}" target="_blank" rel="noopener">Facebook</a></div></div>
     <p class="copy">© <span id="yr"></span> YA Marketing Agency — <span data-i18n="ft.rights"></span></p></div></footer>
   <a class="wa-float" href="https://wa.me/${CONFIG.whatsapp}" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>`;
   document.getElementById('yr').textContent = new Date().getFullYear();
@@ -133,6 +150,16 @@ document.addEventListener('DOMContentLoaded', () => {
   fb.forEach(b => b.onclick = () => {
     fb.forEach(x => x.classList.remove('on')); b.classList.add('on');
     document.querySelectorAll('.work').forEach(w => w.style.display = (b.dataset.f === 'all' || w.dataset.cat === b.dataset.f) ? '' : 'none');
+  });
+  // click a result screenshot to enlarge it
+  document.querySelectorAll('.shot-img').forEach(btn => btn.onclick = () => {
+    const box = document.createElement('div');
+    box.className = 'lightbox';
+    box.innerHTML = '<img src="' + btn.querySelector('img').src + '" alt="">';
+    const close = () => { box.remove(); document.removeEventListener('keydown', onKey); };
+    const onKey = e => { if (e.key === 'Escape') close(); };
+    box.onclick = close; document.addEventListener('keydown', onKey);
+    document.body.appendChild(box);
   });
   // contact form -> WhatsApp
   const form = document.getElementById('contactForm');
