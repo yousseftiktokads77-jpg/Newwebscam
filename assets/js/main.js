@@ -46,7 +46,10 @@ const I18N = {
     'r.t.conv': 'حملات تحويلات', 'r.t.views': 'حملة زيارات صفحة الهبوط', 'r.t.clicks': 'حملة زيارات (نقرات)', 'r.t.purch': 'حملة مبيعات (عمليات شراء)',
     'r.m.conv': 'تحويل', 'r.m.views': 'مشاهدة صفحة', 'r.m.clicks': 'نقرة', 'r.m.purch': 'عملية شراء',
     'r.m.cpconv': 'متوسط تكلفة التحويل', 'r.m.cpv': 'تكلفة مشاهدة الصفحة', 'r.m.cpc': 'تكلفة النقرة', 'r.m.cpa': 'تكلفة الشراء', 'r.m.spend': 'الإنفاق',
-    'por.ind': 'حملاتنا حسب المجال',
+    'por.ind': 'المجالات التي نخدمها', 'por.ind_sub': 'نصمم حملات إعلانية مخصصة لكل مجال حسب هدفه وجمهوره.', 'por.cta': 'اطلب حملة لمجالك', 'por.wamsg': 'مرحبًا YA Marketing Agency، أريد حملة إعلانية لمجال:',
+    'g.realestate.1': 'عملاء محتملون مؤهلون', 'g.realestate.2': 'حجز معاينات', 'g.beauty.1': 'حجز جلسات', 'g.beauty.2': 'عروض موسمية',
+    'g.dental.1': 'حجوزات كشف', 'g.dental.2': 'تقويم وزراعة', 'g.spa.1': 'حجز جلسات', 'g.spa.2': 'تعبئة أوقات الذروة',
+    'g.clothing.1': 'مبيعات المتجر', 'g.clothing.2': 'إطلاق المجموعات', 'g.finance.1': 'عملاء مؤهلون', 'g.finance.2': 'طلبات مقبولة',
     'por.note': '* أرقام كروت المجالات توضيحية فقط — استبدلها بنتائج حملاتك الفعلية.',
     'con.title': 'تواصل معنا', 'con.sub': 'يسعدنا سماع فكرتك — راسلنا وسنرد عليك في أسرع وقت.',
     'con.info': 'طرق التواصل', 'con.wa': 'تواصل عبر واتساب',
@@ -94,7 +97,10 @@ const I18N = {
     'r.t.conv': 'Conversion campaigns', 'r.t.views': 'Landing-page traffic campaign', 'r.t.clicks': 'Traffic campaign (clicks)', 'r.t.purch': 'Sales campaign (purchases)',
     'r.m.conv': 'Conversions', 'r.m.views': 'Landing page views', 'r.m.clicks': 'Clicks', 'r.m.purch': 'Purchases',
     'r.m.cpconv': 'Avg. cost per conversion', 'r.m.cpv': 'Cost per page view', 'r.m.cpc': 'Cost per click', 'r.m.cpa': 'Cost per purchase', 'r.m.spend': 'Spend',
-    'por.ind': 'Our campaigns by industry',
+    'por.ind': 'Industries we serve', 'por.ind_sub': 'Custom ad campaigns built around each industry’s goal and audience.', 'por.cta': 'Request a campaign', 'por.wamsg': 'Hello YA Marketing Agency, I’d like an ad campaign for:',
+    'g.realestate.1': 'Qualified leads', 'g.realestate.2': 'Viewing bookings', 'g.beauty.1': 'Session bookings', 'g.beauty.2': 'Seasonal offers',
+    'g.dental.1': 'Check-up bookings', 'g.dental.2': 'Braces & implants', 'g.spa.1': 'Session bookings', 'g.spa.2': 'Filling peak hours',
+    'g.clothing.1': 'Store sales', 'g.clothing.2': 'Collection launches', 'g.finance.1': 'Qualified leads', 'g.finance.2': 'Approved orders',
     'por.note': '* Industry-card figures are illustrative only — replace with your real campaign results.',
     'con.title': 'Contact Us', 'con.sub': 'We’d love to hear your idea — message us and we’ll reply as soon as possible.',
     'con.info': 'Ways to reach us', 'con.wa': 'Chat on WhatsApp',
@@ -139,6 +145,7 @@ function apply() {
   document.querySelectorAll('[data-i18n-ph]').forEach(el => { el.placeholder = t(el.dataset.i18nPh); });
   document.getElementById('langBtn').textContent = lang === 'ar' ? 'EN' : 'عربي';
   document.querySelectorAll('[data-wa]').forEach(a => a.href = `https://wa.me/${CONFIG.whatsapp}`);
+  document.querySelectorAll('[data-wa-cat]').forEach(a => a.href = `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(t('por.wamsg') + ' ' + t('f.' + a.dataset.waCat))}`);
   document.querySelectorAll('[data-link]').forEach(a => a.href = CONFIG[a.dataset.link]);
   document.title = t('brand') + ' | ' + t(({ 'index.html': 'nav.home', 'portfolio.html': 'nav.portfolio', 'services.html': 'nav.services', 'contact.html': 'nav.contact' })[page] || 'nav.home');
 }
