@@ -112,3 +112,15 @@ form .btn{margin-top:18px;width:100%;justify-content:center}
 .brand img{width:auto;height:50px}
 .foot .brand img{height:40px}
 .logo-hero{height:84px;width:auto;margin-bottom:14px}
+
+.shots{display:flex;flex-wrap:wrap;justify-content:center;gap:22px}
+.shot{flex:0 1 calc((100% - 44px)/3);padding:0;overflow:hidden}
+.shot.wide{flex-basis:100%}
+.shot-img{display:block;width:100%;border:0;background:#fff;padding:0;cursor:zoom-in;border-bottom:1px solid var(--line)}
+.shot-img img{width:100%;height:auto}
+.shot .body{padding:18px 20px 20px}
+.shot .metrics small{display:block}
+.lightbox{position:fixed;inset:0;z-index:100;background:rgba(11,23,64,.88);display:grid;place-items:center;padding:20px;cursor:zoom-out}
+.lightbox img{max-width:min(1100px,100%);max-height:90vh;border-radius:12px;background:#fff}
+@media(max-width:860px){.shot{flex-basis:calc((100% - 22px)/2)}}
+@media(max-width:560px){.shot{flex-basis:100%}}

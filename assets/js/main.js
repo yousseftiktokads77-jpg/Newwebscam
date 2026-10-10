@@ -42,7 +42,12 @@ const I18N = {
     'd.clothing': 'حملات لإطلاق المجموعات الجديدة وزيادة مبيعات المتجر الإلكتروني والفروع.',
     'd.finance': 'حملات لجذب عملاء مؤهلين لخدمات التقسيط وزيادة الطلبات المقبولة.',
     'm.leads': 'عملاء محتملون', 'm.cpl': 'تكلفة العميل', 'm.roas': 'عائد الإنفاق', 'm.book': 'حجوزات', 'm.orders': 'طلبات',
-    'por.note': '* الأرقام والنماذج المعروضة توضيحية — استبدلها بنتائج وصور حملاتك الفعلية.',
+    'r.title': 'نتائج حقيقية من حملاتنا', 'r.sub': 'لقطات حقيقية من لوحات الإعلانات — أسماء الحملات مخفية حفاظًا على خصوصية عملائنا.',
+    'r.t.conv': 'حملات تحويلات', 'r.t.views': 'حملة زيارات صفحة الهبوط', 'r.t.clicks': 'حملة زيارات (نقرات)', 'r.t.purch': 'حملة مبيعات (عمليات شراء)',
+    'r.m.conv': 'تحويل', 'r.m.views': 'مشاهدة صفحة', 'r.m.clicks': 'نقرة', 'r.m.purch': 'عملية شراء',
+    'r.m.cpconv': 'متوسط تكلفة التحويل', 'r.m.cpv': 'تكلفة مشاهدة الصفحة', 'r.m.cpc': 'تكلفة النقرة', 'r.m.cpa': 'تكلفة الشراء', 'r.m.spend': 'الإنفاق',
+    'por.ind': 'حملاتنا حسب المجال',
+    'por.note': '* أرقام كروت المجالات توضيحية فقط — استبدلها بنتائج حملاتك الفعلية.',
     'con.title': 'تواصل معنا', 'con.sub': 'يسعدنا سماع فكرتك — راسلنا وسنرد عليك في أسرع وقت.',
     'con.info': 'طرق التواصل', 'con.wa': 'تواصل عبر واتساب',
     'con.name': 'الاسم', 'con.phone': 'رقم الهاتف', 'con.service': 'الخدمة المطلوبة', 'con.msg': 'رسالتك', 'con.send': 'إرسال عبر واتساب',
@@ -85,7 +90,12 @@ const I18N = {
     'd.clothing': 'Campaigns for new collection launches that lift online-store and branch sales.',
     'd.finance': 'Campaigns attracting qualified customers for installment services and more approved orders.',
     'm.leads': 'Leads', 'm.cpl': 'Cost per lead', 'm.roas': 'ROAS', 'm.book': 'Bookings', 'm.orders': 'Orders',
-    'por.note': '* Figures and samples shown are illustrative — replace with your real campaign results and visuals.',
+    'r.title': 'Real results from our campaigns', 'r.sub': 'Real screenshots from ad dashboards — campaign names are hidden to protect our clients’ privacy.',
+    'r.t.conv': 'Conversion campaigns', 'r.t.views': 'Landing-page traffic campaign', 'r.t.clicks': 'Traffic campaign (clicks)', 'r.t.purch': 'Sales campaign (purchases)',
+    'r.m.conv': 'Conversions', 'r.m.views': 'Landing page views', 'r.m.clicks': 'Clicks', 'r.m.purch': 'Purchases',
+    'r.m.cpconv': 'Avg. cost per conversion', 'r.m.cpv': 'Cost per page view', 'r.m.cpc': 'Cost per click', 'r.m.cpa': 'Cost per purchase', 'r.m.spend': 'Spend',
+    'por.ind': 'Our campaigns by industry',
+    'por.note': '* Industry-card figures are illustrative only — replace with your real campaign results.',
     'con.title': 'Contact Us', 'con.sub': 'We’d love to hear your idea — message us and we’ll reply as soon as possible.',
     'con.info': 'Ways to reach us', 'con.wa': 'Chat on WhatsApp',
     'con.name': 'Name', 'con.phone': 'Phone number', 'con.service': 'Service needed', 'con.msg': 'Your message', 'con.send': 'Send via WhatsApp',
@@ -140,6 +150,16 @@ document.addEventListener('DOMContentLoaded', () => {
   fb.forEach(b => b.onclick = () => {
     fb.forEach(x => x.classList.remove('on')); b.classList.add('on');
     document.querySelectorAll('.work').forEach(w => w.style.display = (b.dataset.f === 'all' || w.dataset.cat === b.dataset.f) ? '' : 'none');
+  });
+  // click a result screenshot to enlarge it
+  document.querySelectorAll('.shot-img').forEach(btn => btn.onclick = () => {
+    const box = document.createElement('div');
+    box.className = 'lightbox';
+    box.innerHTML = '<img src="' + btn.querySelector('img').src + '" alt="">';
+    const close = () => { box.remove(); document.removeEventListener('keydown', onKey); };
+    const onKey = e => { if (e.key === 'Escape') close(); };
+    box.onclick = close; document.addEventListener('keydown', onKey);
+    document.body.appendChild(box);
   });
   // contact form -> WhatsApp
   const form = document.getElementById('contactForm');
