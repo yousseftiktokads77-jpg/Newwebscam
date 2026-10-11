@@ -127,22 +127,22 @@ const I18N = {
 let lang = 'ar';
 try { lang = localStorage.getItem('lang') || 'ar'; } catch (e) {}
 const t = k => (I18N[lang] && I18N[lang][k]) || k;
-const page = (location.pathname.split('/').pop() || 'index.html');
+const page = (location.pathname.split('/').pop() || 'index').replace(/\.html$/, '');
 
 function buildChrome() {
-  const links = [['index.html', 'nav.home'], ['portfolio.html', 'nav.portfolio'], ['services.html', 'nav.services'], ['contact.html', 'nav.contact']];
+  const links = [['/', 'nav.home', 'index'], ['/portfolio', 'nav.portfolio', 'portfolio'], ['/services', 'nav.services', 'services'], ['/contact', 'nav.contact', 'contact']];
   document.getElementById('site-header').innerHTML = `
   <header class="site-header"><div class="container nav">
-    <a class="brand" href="index.html"><img src="assets/img/logo.png" alt="YA logo"><span data-i18n="brand"></span></a>
-    <ul class="nav-links" id="navlinks">${links.map(([h, k]) => `<li><a href="${h}" class="${h === page ? 'active' : ''}" data-i18n="${k}"></a></li>`).join('')}</ul>
+    <a class="brand" href="/"><img src="/assets/img/logo.png" alt="YA logo"><span data-i18n="brand"></span></a>
+    <ul class="nav-links" id="navlinks">${links.map(([h, k, p]) => `<li><a href="${h}" class="${p === page ? 'active' : ''}" data-i18n="${k}"></a></li>`).join('')}</ul>
     <div class="nav-actions">
       <button class="lang-btn" id="langBtn" aria-label="Language"></button>
-      <a class="btn btn-primary" href="contact.html" data-i18n="nav.cta"></a>
+      <a class="btn btn-primary" href="/contact" data-i18n="nav.cta"></a>
       <button class="burger" id="burger" aria-label="Menu">☰</button>
     </div></div></header>`;
   document.getElementById('site-footer').innerHTML = `
   <footer class="site-footer"><div class="container">
-    <div class="foot"><div><a class="brand" href="index.html"><img src="assets/img/logo.png" alt="" width="36" height="36"><span data-i18n="brand"></span></a><p data-i18n="ft.tag" style="margin-top:8px"></p></div>
+    <div class="foot"><div><a class="brand" href="/"><img src="/assets/img/logo.png" alt="" width="36" height="36"><span data-i18n="brand"></span></a><p data-i18n="ft.tag" style="margin-top:8px"></p></div>
     <div class="foot-links">${links.map(([h, k]) => `<a href="${h}" data-i18n="${k}"></a>`).join('')}</div>
     <div class="foot-links"><a href="${CONFIG.instagram}" target="_blank" rel="noopener">Instagram</a><a href="${CONFIG.facebook}" target="_blank" rel="noopener">Facebook</a></div></div>
     <p class="copy">© <span id="yr"></span> YA Marketing Agency — <span data-i18n="ft.rights"></span></p></div></footer>
@@ -161,7 +161,7 @@ function apply() {
   document.querySelectorAll('[data-wa]').forEach(a => a.href = `https://wa.me/${CONFIG.whatsapp}`);
   document.querySelectorAll('[data-wa-cat]').forEach(a => a.href = `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(t('por.wamsg') + ' ' + t('f.' + a.dataset.waCat))}`);
   document.querySelectorAll('[data-link]').forEach(a => a.href = CONFIG[a.dataset.link]);
-  document.title = t('brand') + ' | ' + t(({ 'index.html': 'nav.home', 'portfolio.html': 'nav.portfolio', 'services.html': 'nav.services', 'contact.html': 'nav.contact' })[page] || 'nav.home');
+  document.title = t('brand') + ' | ' + t(({ index: 'nav.home', portfolio: 'nav.portfolio', services: 'nav.services', contact: 'nav.contact' })[page] || 'nav.home');
 }
 
 document.addEventListener('DOMContentLoaded', () => {
