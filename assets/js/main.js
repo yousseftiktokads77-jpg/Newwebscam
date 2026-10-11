@@ -22,6 +22,12 @@ const I18N = {
     'home.w2t': 'إبداع يلفت الانتباه', 'home.w2d': 'تصاميم ومحتوى يميّز علامتك ويترك أثرًا عند جمهورك.',
     'home.w3t': 'تقارير شفافة', 'home.w3d': 'نتابعك بتقارير واضحة عن أداء الحملات والنتائج.',
     'home.ctat': 'جاهز تكبّر نشاطك التجاري؟', 'home.ctap': 'احجز استشارة مجانية وخلّينا نبدأ خطة النمو الخاصة بك.',
+    'how.title': 'كيف نعمل معك؟', 'how.sub': 'أربع خطوات بسيطة من أول تواصل حتى النتائج.',
+    'how.s1t': 'استشارة وفهم نشاطك', 'how.s1d': 'نتعرّف على نشاطك وأهدافك وجمهورك المستهدف.',
+    'how.s2t': 'خطة واضحة', 'how.s2d': 'نضع استراتيجية وخطة إعلانية مناسبة لهدفك وميزانيتك.',
+    'how.s3t': 'تنفيذ وإطلاق', 'how.s3d': 'نصمم الإعلانات والمحتوى ونطلق الحملات على المنصات المناسبة.',
+    'how.s4t': 'متابعة وتحسين', 'how.s4d': 'نتابع الأداء ونرسل تقارير واضحة ونحسّن الحملات باستمرار.',
+    'rev.title': 'ماذا يقول عملاؤنا', 'rev.sub': 'آراء حقيقية من عملائنا على فيسبوك، والأسماء مخفية حفاظًا على الخصوصية.',
     'srv.title': 'خدماتنا', 'srv.sub': 'كل ما تحتاجه لتسويق نشاطك التجاري في مكان واحد.',
     's1t': 'إدارة السوشيال ميديا', 's1d': 'إدارة حساباتك على إنستجرام وفيسبوك بمحتوى منتظم وجذاب.',
     's2t': 'الإعلانات المدفوعة', 's2d': 'حملات ممولة على ميتا وجوجل تستهدف العميل المناسب بأقل تكلفة.',
@@ -74,6 +80,12 @@ const I18N = {
     'home.w2t': 'Creativity that stands out', 'home.w2d': 'Designs and content that set your brand apart and stay with your audience.',
     'home.w3t': 'Transparent reporting', 'home.w3d': 'Clear reports on campaign performance and results.',
     'home.ctat': 'Ready to grow your business?', 'home.ctap': 'Book a free consultation and let’s start your growth plan.',
+    'how.title': 'How we work', 'how.sub': 'Four simple steps from first contact to results.',
+    'how.s1t': 'Consultation', 'how.s1d': 'We learn about your business, goals and target audience.',
+    'how.s2t': 'A clear plan', 'how.s2d': 'We build a strategy and ad plan that fits your goal and budget.',
+    'how.s3t': 'Launch', 'how.s3d': 'We create the ads and content and launch campaigns on the right platforms.',
+    'how.s4t': 'Track & optimize', 'how.s4d': 'We monitor performance, send clear reports and keep improving.',
+    'rev.title': 'What our clients say', 'rev.sub': 'Real feedback from our clients on Facebook, with names hidden to protect privacy.',
     'srv.title': 'Our Services', 'srv.sub': 'Everything you need to market your business, in one place.',
     's1t': 'Social media management', 's1d': 'We run your Instagram and Facebook with consistent, engaging content.',
     's2t': 'Paid advertising', 's2d': 'Meta and Google campaigns that target the right customer at the lowest cost.',
@@ -160,6 +172,74 @@ document.addEventListener('DOMContentLoaded', () => {
     fb.forEach(x => x.classList.remove('on')); b.classList.add('on');
     document.querySelectorAll('.work').forEach(w => w.style.display = (b.dataset.f === 'all' || w.dataset.cat === b.dataset.f) ? '' : 'none');
   });
+  // reviews slider (scroll-snap + arrows + gentle autoplay)
+  const track = document.querySelector('.slider .track');
+  if (track) {
+    const slider = track.parentElement;
+    const rtl = () => document.documentElement.dir === 'rtl';
+    const fwd = () => (rtl() ? -1 : 1);
+    const step = () => track.querySelector('.quote').getBoundingClientRect().width + 22;
+    const atEnd = () => Math.abs(track.scrollLeft) + track.clientWidth >= track.scrollWidth - 4;
+    const atStart = () => Math.abs(track.scrollLeft) < 4;
+    const go = dir => {
+      if (dir === fwd() && atEnd()) track.scrollTo({ left: 0, behavior: 'smooth' });
+      else if (dir !== fwd() && atStart()) track.scrollTo({ left: fwd() * (track.scrollWidth - track.clientWidth), behavior: 'smooth' });
+      else track.scrollBy({ left: dir * step(), behavior: 'smooth' });
+    };
+    slider.querySelector('.sl-left').onclick = () => go(-1);
+    slider.querySelector('.sl-right').onclick = () => go(1);
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let paused = false, resume;
+    const hold = ms => { paused = true; clearTimeout(resume); resume = setTimeout(() => { paused = false; }, ms); };
+    slider.addEventListener('mouseenter', () => { paused = true; clearTimeout(resume); });
+    slider.addEventListener('mouseleave', () => { paused = false; });
+    slider.addEventListener('touchstart', () => hold(9000), { passive: true });
+    slider.addEventListener('focusin', () => hold(9000));
+    if (!reduce) setInterval(() => { if (!paused && !document.hidden) go(fwd()); }, 4500);
+  }
+
+  // light motion: reveal sections on scroll + count-up numbers
+  const calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!calm && 'IntersectionObserver' in window) {
+    const targets = document.querySelectorAll('.sec-head, .grid > .card, .stat, .cta-band, .video-text, .video-frame, .slider, .shots > .card, .contact-grid > .card');
+    const io = new IntersectionObserver(entries => entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el = e.target; io.unobserve(el);
+      el.classList.add('in');
+      setTimeout(() => el.classList.remove('reveal', 'in'), 1100);
+    }), { threshold: 0.12 });
+    targets.forEach(el => {
+      if (el.getBoundingClientRect().top < window.innerHeight * 0.92) return;
+      const i = [...el.parentElement.children].indexOf(el);
+      el.style.transitionDelay = (i % 4) * 90 + 'ms';
+      el.classList.add('reveal'); io.observe(el);
+    });
+    const countUp = el => {
+      const t = el.textContent.trim();
+      const m = t.match(/^([^0-9]*)([\d,]*\.?\d+)(.*)$/);
+      if (!m) return;
+      const [, pre, num, suf] = m;
+      const target = parseFloat(num.replace(/,/g, ''));
+      const dec = (num.split('.')[1] || '').length, comma = num.includes(',');
+      const fmt = v => {
+        let s = v.toFixed(dec);
+        if (comma) { const [a, b] = s.split('.'); s = Number(a).toLocaleString('en-US') + (b ? '.' + b : ''); }
+        return pre + s + suf;
+      };
+      let t0 = null;
+      el.textContent = fmt(0);
+      requestAnimationFrame(function tick(ts) {
+        if (t0 === null) t0 = ts;
+        const p = Math.min((ts - t0) / 1400, 1), eased = 1 - Math.pow(1 - p, 3);
+        if (p < 1) { el.textContent = fmt(target * eased); requestAnimationFrame(tick); } else el.textContent = t;
+      });
+    };
+    const co = new IntersectionObserver(entries => entries.forEach(e => {
+      if (e.isIntersecting) { co.unobserve(e.target); countUp(e.target); }
+    }), { threshold: 0.6 });
+    document.querySelectorAll('.tiles b, .stat b').forEach(el => co.observe(el));
+  }
+
   // load the YouTube player only when the visitor taps play
   document.querySelectorAll('[data-yt]').forEach(b => b.onclick = () => {
     const f = document.createElement('iframe');
