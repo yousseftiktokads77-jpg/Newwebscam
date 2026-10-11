@@ -62,6 +62,10 @@ const I18N = {
     'con.info': 'طرق التواصل', 'con.wa': 'تواصل عبر واتساب',
     'con.name': 'الاسم', 'con.phone': 'رقم الهاتف', 'con.service': 'الخدمة المطلوبة', 'con.msg': 'رسالتك', 'con.send': 'إرسال عبر واتساب',
     'con.pick': 'اختر الخدمة', 'con.hello': 'مرحبًا YA Marketing Agency،',
+    'q.title': 'اطلب عرض سعر', 'q.sub': 'املأ البيانات وسنرسل لك عرضًا مناسبًا لنشاطك.', 'q.biz': 'نوع النشاط', 'q.biz_ph': 'مثال: عيادة أسنان',
+    'q.msg': 'تفاصيل طلبك (اختياري)', 'q.other': 'أخرى', 'q.send': 'اطلب عرض السعر', 'q.hello': 'مرحبًا YA Marketing Agency، أريد طلب عرض سعر:',
+    'q.okt': 'تم استلام طلبك ✅', 'q.okp': 'سنتواصل معك قريبًا. وتقدر تكمل مباشرة على واتساب.', 'q.wa': 'أكمل على واتساب',
+    'q.failt': 'تعذّر إرسال الطلب', 'q.failp': 'من فضلك أرسله لنا مباشرة عبر واتساب.',
     'ft.rights': 'جميع الحقوق محفوظة.', 'ft.tag': 'نصنع نمو علامتك التجارية.'
   },
   en: {
@@ -120,6 +124,10 @@ const I18N = {
     'con.info': 'Ways to reach us', 'con.wa': 'Chat on WhatsApp',
     'con.name': 'Name', 'con.phone': 'Phone number', 'con.service': 'Service needed', 'con.msg': 'Your message', 'con.send': 'Send via WhatsApp',
     'con.pick': 'Choose a service', 'con.hello': 'Hello YA Marketing Agency,',
+    'q.title': 'Request a quote', 'q.sub': 'Fill in your details and we’ll send you an offer that fits your business.', 'q.biz': 'Business type', 'q.biz_ph': 'e.g. dental clinic',
+    'q.msg': 'Request details (optional)', 'q.other': 'Other', 'q.send': 'Request a quote', 'q.hello': 'Hello YA Marketing Agency, I’d like to request a quote:',
+    'q.okt': 'Your request was received ✅', 'q.okp': 'We’ll contact you soon. You can also continue directly on WhatsApp.', 'q.wa': 'Continue on WhatsApp',
+    'q.failt': 'We couldn’t send your request', 'q.failp': 'Please send it to us directly on WhatsApp.',
     'ft.rights': 'All rights reserved.', 'ft.tag': 'We build your brand’s growth.'
   }
 };
@@ -258,12 +266,25 @@ document.addEventListener('DOMContentLoaded', () => {
     box.onclick = close; document.addEventListener('keydown', onKey);
     document.body.appendChild(box);
   });
-  // contact form -> WhatsApp
-  const form = document.getElementById('contactForm');
-  if (form) form.onsubmit = e => {
+  // quote request form: store it with Netlify Forms, then offer WhatsApp as a follow-up
+  const qf = document.getElementById('quoteForm');
+  if (qf) qf.onsubmit = async e => {
     e.preventDefault();
-    const d = new FormData(form);
-    const text = `${t('con.hello')}\n${t('con.name')}: ${d.get('name')}\n${t('con.phone')}: ${d.get('phone')}\n${t('con.service')}: ${d.get('service')}\n${d.get('msg')}`;
-    window.open(`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(text)}`, '_blank');
+    const d = new FormData(qf);
+    const svc = qf.service.options[qf.service.selectedIndex].text;
+    d.set('service', svc);
+    const text = [t('q.hello'), `${t('con.name')}: ${d.get('name')}`, `${t('con.phone')}: ${d.get('phone')}`,
+      `${t('q.biz')}: ${d.get('business') || '-'}`, `${t('con.service')}: ${svc}`, d.get('msg') || ''].join('\n');
+    const wa = `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(text)}`;
+    const btn = qf.querySelector('button[type=submit]');
+    btn.disabled = true;
+    let ok = false;
+    try {
+      const r = await fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(d).toString() });
+      ok = r.ok;
+    } catch (err) { ok = false; }
+    qf.hidden = true;
+    document.querySelectorAll('[data-qwa]').forEach(a => a.href = wa);
+    document.getElementById(ok ? 'quoteOk' : 'quoteFail').hidden = false;
   };
 });

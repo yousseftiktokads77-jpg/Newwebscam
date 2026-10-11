@@ -33,14 +33,20 @@
    <a data-link="instagram" target="_blank" rel="noopener" href="#">📸 Instagram</a>
    <a data-link="facebook" target="_blank" rel="noopener" href="#">👍 Facebook</a>
   </div></div>
- <div class="card"><form id="contactForm">
+ <div class="card quote-form"><h3 data-i18n="q.title"></h3><p class="q-sub" data-i18n="q.sub"></p>
+<form id="quoteForm" name="quote" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+  <input type="hidden" name="form-name" value="quote">
+  <p class="hp"><label>Leave this empty: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
   <label for="name" data-i18n="con.name"></label><input id="name" name="name" required>
   <label for="phone" data-i18n="con.phone"></label><input id="phone" name="phone" type="tel" required>
-  <label for="service" data-i18n="con.service"></label>
-  <select id="service" name="service"><option value="Social Media">Social Media</option><option value="Paid Ads">Paid Ads</option><option value="Content">Content</option><option value="Branding">Branding</option><option value="SEO">SEO</option><option value="Web">Web</option></select>
-  <label for="msg" data-i18n="con.msg"></label><textarea id="msg" name="msg"></textarea>
-  <button class="btn btn-primary" type="submit" data-i18n="con.send"></button>
- </form></div>
+  <label for="business" data-i18n="q.biz"></label><input id="business" name="business" data-i18n-ph="q.biz_ph">
+  <label for="service" data-i18n="con.service"></label><select id="service" name="service"><option value="s1t" data-i18n="s1t"></option><option value="s2t" data-i18n="s2t"></option><option value="s3t" data-i18n="s3t"></option><option value="s4t" data-i18n="s4t"></option><option value="s5t" data-i18n="s5t"></option><option value="s6t" data-i18n="s6t"></option><option value="q.other" data-i18n="q.other"></option></select>
+  <label for="msg" data-i18n="q.msg"></label><textarea id="msg" name="msg"></textarea>
+  <button class="btn btn-primary" type="submit" data-i18n="q.send"></button>
+ </form>
+ <div class="q-done" id="quoteOk" hidden><h3 data-i18n="q.okt"></h3><p data-i18n="q.okp"></p><a class="btn btn-primary" data-qwa target="_blank" rel="noopener" href="#" data-i18n="q.wa"></a></div>
+ <div class="q-done" id="quoteFail" hidden><h3 data-i18n="q.failt"></h3><p data-i18n="q.failp"></p><a class="btn btn-primary" data-qwa target="_blank" rel="noopener" href="#" data-i18n="q.wa"></a></div>
+</div>
 </div></section>
 </main>
 <div id="site-footer"></div>

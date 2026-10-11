@@ -166,3 +166,11 @@ form .btn{margin-top:18px;width:100%;justify-content:center}
 .reveal.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
 
+
+.hp{position:absolute;left:-9999px;height:0;overflow:hidden}
+.quote-form h3{font-size:1.35rem;color:var(--navy)}
+.q-sub{color:var(--muted);margin-bottom:6px}
+.q-done{text-align:center;padding:36px 8px}
+.q-done h3{margin-bottom:8px}
+.q-done p{color:var(--muted);margin-bottom:22px}
+.q-done[hidden]{display:none}
