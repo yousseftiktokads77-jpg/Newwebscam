@@ -32,6 +32,7 @@ const I18N = {
     'srv.list1': 'خطة محتوى شهرية', 'srv.list2': 'تقارير أداء', 'srv.list3': 'استهداف دقيق',
     'por.title': 'معرض أعمالنا', 'por.sub': 'نماذج من أعمالنا ونتائج حقيقية حققناها لعملائنا.',
     'f.all': 'الكل', 'f.realestate': 'عقارات', 'f.beauty': 'عيادات تجميل', 'f.dental': 'عيادات أسنان', 'f.spa': 'مساج واسترخاء', 'f.clothing': 'ملابس', 'f.finance': 'شركات تقسيط',
+    'vid.badge': '🎬 تعرّف علينا', 'vid.title': 'تعرّف على <span class="grad-text">YA Marketing Agency</span>', 'vid.sub': 'شاهد الفيديو لتتعرّف علينا وعلى طريقة عملنا، وكيف نساعد نشاطك التجاري على الوصول لعملائه وتحقيق نتائج حقيقية.',
     'por.title': 'معرض أعمالنا', 'por.sub': 'حملات إعلانية حققت نتائج حقيقية في أكثر من مجال.',
     'c.realestate': 'حملات إعلانية — عقارات', 'c.beauty': 'حملات إعلانية — عيادات التجميل', 'c.dental': 'حملات إعلانية — عيادات الأسنان',
     'c.spa': 'حملات إعلانية — مراكز الاسترخاء والمساج', 'c.clothing': 'حملات إعلانية — الملابس', 'c.finance': 'حملات إعلانية — شركات التقسيط',
@@ -83,6 +84,7 @@ const I18N = {
     'srv.list1': 'Monthly content plan', 'srv.list2': 'Performance reports', 'srv.list3': 'Precise targeting',
     'por.title': 'Our Work', 'por.sub': 'Samples of our work and real results we delivered for clients.',
     'f.all': 'All', 'f.realestate': 'Real estate', 'f.beauty': 'Beauty clinics', 'f.dental': 'Dental clinics', 'f.spa': 'Spa & massage', 'f.clothing': 'Clothing', 'f.finance': 'Installment companies',
+    'vid.badge': '🎬 About us', 'vid.title': 'Meet <span class="grad-text">YA Marketing Agency</span>', 'vid.sub': 'Watch the video to see who we are, how we work, and how we help your business reach its customers and get real results.',
     'por.title': 'Our Work', 'por.sub': 'Ad campaigns that delivered real results across multiple industries.',
     'c.realestate': 'Ad campaigns — Real estate', 'c.beauty': 'Ad campaigns — Beauty clinics', 'c.dental': 'Ad campaigns — Dental clinics',
     'c.spa': 'Ad campaigns — Spa & massage centers', 'c.clothing': 'Ad campaigns — Clothing', 'c.finance': 'Ad campaigns — Installment companies',
@@ -157,6 +159,14 @@ document.addEventListener('DOMContentLoaded', () => {
   fb.forEach(b => b.onclick = () => {
     fb.forEach(x => x.classList.remove('on')); b.classList.add('on');
     document.querySelectorAll('.work').forEach(w => w.style.display = (b.dataset.f === 'all' || w.dataset.cat === b.dataset.f) ? '' : 'none');
+  });
+  // load the YouTube player only when the visitor taps play
+  document.querySelectorAll('[data-yt]').forEach(b => b.onclick = () => {
+    const f = document.createElement('iframe');
+    f.src = 'https://www.youtube-nocookie.com/embed/' + b.dataset.yt + '?autoplay=1&rel=0&playsinline=1';
+    f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+    f.allowFullscreen = true; f.title = 'YA Marketing Agency';
+    b.replaceWith(f);
   });
   // click a result screenshot to enlarge it
   document.querySelectorAll('.shot-img').forEach(btn => btn.onclick = () => {
