@@ -235,3 +235,29 @@ body{overflow-x:clip}
 .faq-a li{margin-bottom:4px}
 .faq-a a{color:var(--blue);font-weight:700;text-decoration:underline}
 @media(prefers-reduced-motion:no-preference){.faq-item[open] .faq-a{animation:rise .35s ease both}}
+
+/* articles: compact strip on the home page + article pages */
+.sec-slim{padding:36px 0}
+.sec-head.tight{margin-bottom:20px}
+.sec-head.tight h2{font-size:clamp(1.3rem,2.4vw,1.7rem)}
+.articles{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.art-card{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);font-weight:700;font-size:.95rem;line-height:1.6;color:var(--navy);transition:transform .2s,border-color .2s}
+.art-card:hover{transform:translateY(-3px);border-color:var(--orange)}
+.art-card i{flex:none;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:var(--soft);color:var(--orange);font-style:normal;font-weight:800}
+[dir=ltr] .art-card i{transform:scaleX(-1)}
+@media(max-width:860px){.articles{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:6px}.articles::-webkit-scrollbar{display:none}.art-card{flex:0 0 74%;scroll-snap-align:start}}
+.art-meta{color:var(--muted);margin-top:8px}
+.article{max-width:780px;margin:0 auto;padding:34px 16px 24px;font-size:1.08rem;line-height:2;color:var(--ink)}
+.article h2{font-size:1.5rem;color:var(--navy);margin:30px 0 8px;line-height:1.5}
+.article p{margin:10px 0}
+.article ul,.article ol{padding-inline-start:24px;margin:10px 0}
+.article li{margin-bottom:6px}
+.article a{color:var(--blue);font-weight:700;text-decoration:underline;text-underline-offset:3px}
+.art-cta{margin:36px 0 22px;padding:26px 22px;border-radius:var(--radius);background:linear-gradient(120deg,var(--navy),var(--blue));color:#fff;text-align:center}
+.art-cta h3{font-size:1.35rem;margin-bottom:6px}
+.art-cta p{margin:0 0 16px;opacity:.92}
+.art-cta a.btn{color:#fff;text-decoration:none}
+.related{border-top:1px solid var(--line);padding-top:16px}
+.related h3{font-size:1.05rem;color:var(--navy)}
+.related ul{list-style:none;padding:0;margin:8px 0 0}
+.related li{margin:6px 0}
