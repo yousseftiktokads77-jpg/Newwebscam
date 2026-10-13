@@ -1,3 +1,5 @@
+@font-face{font-family:'Cairo';font-style:normal;font-weight:200 1000;font-display:swap;src:url(/assets/fonts/cairo-arabic.woff2) format('woff2');unicode-range:U+0600-06FF,U+0750-077F,U+0870-0891,U+0897-08E1,U+08E3-08FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE70-FE74,U+FE76-FEFC}
+@font-face{font-family:'Cairo';font-style:normal;font-weight:200 1000;font-display:swap;src:url(/assets/fonts/cairo-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 :root{--orange:#ff6a13;--orange-2:#ff8a3d;--orange-3:#ffb27a;--orange-rgb:255,106,19;--blue:#1e4fe0;--blue-rgb:30,79,224;--navy:#0b1740;--ink:#101828;--muted:#5b6475;--bg:#ffffff;--soft:#f4f6fc;--card:#ffffff;--line:#e5e9f5;--radius:18px;--shadow:0 10px 30px rgba(16,40,120,.10)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -7,7 +9,7 @@ a{color:inherit;text-decoration:none}
 .container{width:min(1140px,100% - 32px);margin-inline:auto}
 .grad-text{background:linear-gradient(90deg,var(--orange),var(--blue));-webkit-background-clip:text;background-clip:text;color:transparent}
 /* header */
-.site-header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.site-header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.97);border-bottom:1px solid var(--line)}
 .nav{display:flex;align-items:center;justify-content:space-between;height:72px;gap:16px}
 .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.15rem}
 .brand img{width:42px;height:42px}
@@ -201,20 +203,16 @@ form .btn{margin-top:18px;width:100%;justify-content:center}
 .ico{transition:transform .3s}
 .card:hover .ico{transform:scale(1.12) rotate(-7deg)}
 @media(prefers-reduced-motion:no-preference){
- body{animation:pageIn .6s ease both}
- @keyframes pageIn{from{opacity:0}to{opacity:1}}
  @keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
- @keyframes shimmer{0%{background-position:0% 50%}100%{background-position:200% 50%}}
  @keyframes ping{0%{transform:scale(1);opacity:.55}100%{transform:scale(1.7);opacity:0}}
  @keyframes pop{from{opacity:0;transform:scale(.85)}to{opacity:1;transform:none}}
- .hero-grid>*:first-child{animation:rise .8s .05s both}
- .hero-card{animation:rise .8s .25s both,float 7s 1.1s ease-in-out infinite}
- .tiles>div{animation:pop .6s both}
- .tiles>div:nth-child(1){animation-delay:.55s}.tiles>div:nth-child(2){animation-delay:.67s}
- .tiles>div:nth-child(3){animation-delay:.79s}.tiles>div:nth-child(4){animation-delay:.91s}
- .page-hero .container{animation:rise .7s both}
- .grad-text{background-size:200% auto;background:linear-gradient(90deg,var(--orange),var(--blue),var(--orange));background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shimmer 6s linear infinite}
+ .hero-grid>*:first-child{animation:rise .5s both}
+ .hero-card{animation:rise .5s .1s both,float 7s .7s ease-in-out infinite}
+ .tiles>div{animation:pop .4s both}
+ .tiles>div:nth-child(1){animation-delay:.2s}.tiles>div:nth-child(2){animation-delay:.28s}
+ .tiles>div:nth-child(3){animation-delay:.36s}.tiles>div:nth-child(4){animation-delay:.44s}
+ .page-hero .container{animation:rise .5s both}
  .wa-float::before{content:"";position:absolute;inset:0;border-radius:50%;background:#25d366;z-index:-1;animation:ping 2.2s ease-out infinite}
  .yt .play::before{content:"";position:absolute;inset:0;border-radius:50%;background:var(--orange);z-index:-1;animation:ping 2s ease-out infinite}
  .step .num{animation:none}

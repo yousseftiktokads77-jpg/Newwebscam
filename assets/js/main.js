@@ -161,7 +161,7 @@ function buildChrome() {
   const links = [['/', 'nav.home', 'index'], ['/portfolio', 'nav.portfolio', 'portfolio'], ['/services', 'nav.services', 'services'], ['/contact', 'nav.contact', 'contact']];
   document.getElementById('site-header').innerHTML = `
   <header class="site-header"><div class="container nav">
-    <a class="brand" href="/"><img src="/assets/img/logo.png" alt="YA logo"><span data-i18n="brand"></span></a>
+    <a class="brand" href="/"><img src="/assets/img/logo.png" alt="YA logo" width="50" height="50"><span data-i18n="brand"></span></a>
     <ul class="nav-links" id="navlinks">${links.map(([h, k, p]) => `<li><a href="${h}" class="${p === page ? 'active' : ''}" data-i18n="${k}"></a></li>`).join('')}</ul>
     <div class="nav-actions">
       <button class="lang-btn" id="langBtn" aria-label="Language"></button>
@@ -170,7 +170,7 @@ function buildChrome() {
     </div></div></header>`;
   document.getElementById('site-footer').innerHTML = `
   <footer class="site-footer"><div class="container">
-    <div class="foot"><div><a class="brand" href="/"><img src="/assets/img/logo.png" alt="" width="36" height="36"><span data-i18n="brand"></span></a><p data-i18n="ft.tag" style="margin-top:8px"></p></div>
+    <div class="foot"><div><a class="brand" href="/"><img src="/assets/img/logo.png" alt="" width="40" height="40"><span data-i18n="brand"></span></a><p data-i18n="ft.tag" style="margin-top:8px"></p></div>
     <div class="foot-links">${links.map(([h, k]) => `<a href="${h}" data-i18n="${k}"></a>`).join('')}</div>
     <div class="foot-links"><a href="${CONFIG.instagram}" target="_blank" rel="noopener">Instagram</a><a href="${CONFIG.facebook}" target="_blank" rel="noopener">Facebook</a></div></div>
     <p class="copy">© <span id="yr"></span> YA Marketing Agency — <span data-i18n="ft.rights"></span></p></div></footer>
