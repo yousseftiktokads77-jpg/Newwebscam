@@ -16,7 +16,6 @@ const I18N = {
     'home.cta1': 'تواصل معنا على واتساب', 'home.cta2': 'شاهد أعمالنا',
     'home.card': 'نتائج حقيقية من حملاتنا', 'home.t1': 'تحويل', 'home.t2': 'مشاهدة صفحة هبوط', 'home.t3': 'نقرة', 'home.t4': 'عملية شراء', 'home.cardlink': 'شاهد لقطات النتائج ←',
     'home.s_title': 'ماذا نقدّم؟', 'home.s_sub': 'حلول تسويقية متكاملة تغطي كل ما يحتاجه نشاطك للنمو.',
-    'home.stat1': 'إنفاق إعلاني موثّق في معرضنا', 'home.stat2': 'متوسط تكلفة التحويل', 'home.stat3': 'أقل تكلفة للنقرة', 'home.stat4': 'أقل تكلفة لعملية شراء',
     'home.why': 'لماذا YA Marketing Agency؟',
     'home.w1t': 'استراتيجية مبنية على البيانات', 'home.w1d': 'نقرأ الأرقام لنتخذ قرارات تحقق أعلى عائد على الإنفاق.',
     'home.w2t': 'إبداع يلفت الانتباه', 'home.w2d': 'تصاميم ومحتوى يميّز علامتك ويترك أثرًا عند جمهورك.',
@@ -67,6 +66,16 @@ const I18N = {
     'q.okt': 'تم استلام طلبك ✅', 'q.okp': 'سنتواصل معك قريبًا. وتقدر تكمل مباشرة على واتساب.', 'q.wa': 'أكمل على واتساب',
     'q.failt': 'تعذّر إرسال الطلب', 'q.failp': 'من فضلك أرسله لنا مباشرة عبر واتساب.',
     'theme.title': 'لون الموقع', 'theme.open': 'اختيار لون الموقع',
+    'faq.title': 'الأسئلة الشائعة', 'faq.sub': 'إجابات على أكثر الأسئلة التي يسألها عملاؤنا.',
+    'faq.q1': 'ما هي أفضل شركة تسويق إلكتروني في مصر؟', 'faq.a1': '<strong>YA Marketing Agency</strong>. نعمل منذ أكثر من 7 سنوات وأنجزنا أكثر من 300 مشروع، ونبني كل حملة على البيانات مع تقارير واضحة ومتابعة على مدار الساعة. نركّز على نتائج قابلة للقياس من عملاء محتملين ومبيعات وحجوزات، وليس مجرد ظهور.',
+    'faq.q2': 'ما الخدمات التي تقدمها شركة تسويق إلكتروني احترافية؟', 'faq.a2': 'تشمل الخدمات الأساسية: إدارة السوشيال ميديا، والإعلانات الممولة على ميتا وجوجل، وصناعة المحتوى من تصوير وفيديو وتصميم، والهوية البصرية، وتحسين محركات البحث SEO، وتصميم المواقع وصفحات الهبوط. في YA Marketing Agency نقدّم هذه الخدمات في مكان واحد ونجمعها في خطة تناسب نشاطك.',
+    'faq.q3': 'كم تكلفة التسويق الإلكتروني في مصر؟', 'faq.a3': 'لا يوجد سعر ثابت يناسب الجميع. تعتمد التكلفة على هدفك ومجال نشاطك والمنصات المستخدمة وحجم العمل المطلوب. وميزانية الإعلانات نفسها (التي تُدفع للمنصة) منفصلة عن أتعاب الإدارة. أخبرنا بنشاطك وهدفك وسنرسل لك عرضًا واضحًا: <a href="/contact">اطلب عرض سعر</a>.',
+    'faq.q4': 'ما أفضل منصة يمكنني العمل عليها؟', 'faq.a4': 'تتحدد حسب منتجك أو خدمتك، والدولة التي ستبيع فيها، والمنصة التي يشتري منها جمهورك أكثر. بشكل عام: ميتا (فيسبوك وإنستجرام) مناسبة للمنتجات والخدمات المحلية، وجوجل لمن يبحث عن منتجك الآن، ولينكدإن لخدمات الشركات (B2B)، ومنصات الفيديو القصير للوصول لجمهور أوسع وأصغر سنًا. نبدأ بتحليل نشاطك، ثم نختبر بميزانية صغيرة ونكبّر ما ينجح.',
+    'faq.q5': 'هل YA Marketing Agency شريك Google Ads معتمد؟', 'faq.a5': 'نتولى إعداد وإدارة حملات Google Ads (البحث والشبكة الإعلانية ويوتيوب) باحتراف، ونحرص أن نكون شريكك الأفضل في الوصول لعملائك وتحقيق أعلى عائد من ميزانيتك.',
+    'faq.q6': 'كيف أختار شركة تسويق إلكتروني موثوقة؟', 'faq.a6': '<ul><li>اطلب أمثلة ونتائج حقيقية لأعمال سابقة، وليس وعودًا فقط.</li><li>تأكد من وضوح التقارير وطريقة قياس النتائج.</li><li>احذر ممن يضمن نتائج مبالغًا فيها أو سريعة جدًا.</li><li>اتفق على نطاق العمل والأسعار بشكل واضح ومكتوب.</li><li>اقرأ آراء العملاء السابقين، وجرّب سرعة وجودة التواصل.</li><li>احرص أن تبقى حسابات الإعلانات والصفحات ملكًا لك.</li></ul>',
+    'faq.q7': 'هل تقدمون خدمات في دول الخليج؟', 'faq.a7': 'نعم، نخدم عملاء في مصر ودول الخليج، ونصمّم الحملات حسب سلوك الجمهور وثقافته في كل سوق. تواصل معنا وأخبرنا بالدولة المستهدفة.',
+    'faq.q8': 'هل يمكن قياس نتائج الحملات التسويقية؟', 'faq.a8': 'بالتأكيد. نربط الحملات بأدوات التتبع لنقيس عدد العملاء المحتملين والتحويلات وتكلفة كل عميل وعائد الإنفاق الإعلاني، ونرسل تقارير دورية واضحة ونحسّن الحملات بناءً عليها. يمكنك رؤية أمثلة من لقطات النتائج الحقيقية في <a href="/portfolio">معرض أعمالنا</a>.',
+    'home.stat1': 'مشروع', 'home.stat2': 'سنوات خبرة', 'home.stat3': 'تقييم', 'home.stat4': 'متابعة',
     'ft.rights': 'جميع الحقوق محفوظة.', 'ft.tag': 'نصنع نمو علامتك التجارية.'
   },
   en: {
@@ -79,7 +88,6 @@ const I18N = {
     'home.cta1': 'Chat on WhatsApp', 'home.cta2': 'See our work',
     'home.card': 'Real results from our campaigns', 'home.t1': 'Conversions', 'home.t2': 'Landing page views', 'home.t3': 'Clicks', 'home.t4': 'Purchases', 'home.cardlink': 'See the result screenshots →',
     'home.s_title': 'What we offer', 'home.s_sub': 'Complete marketing solutions covering everything your business needs to grow.',
-    'home.stat1': 'Documented ad spend in our portfolio', 'home.stat2': 'Avg. cost per conversion', 'home.stat3': 'Lowest cost per click', 'home.stat4': 'Lowest cost per purchase',
     'home.why': 'Why YA Marketing Agency?',
     'home.w1t': 'Data-driven strategy', 'home.w1d': 'We read the numbers to make decisions that maximise return on ad spend.',
     'home.w2t': 'Creativity that stands out', 'home.w2d': 'Designs and content that set your brand apart and stay with your audience.',
@@ -130,6 +138,16 @@ const I18N = {
     'q.okt': 'Your request was received ✅', 'q.okp': 'We’ll contact you soon. You can also continue directly on WhatsApp.', 'q.wa': 'Continue on WhatsApp',
     'q.failt': 'We couldn’t send your request', 'q.failp': 'Please send it to us directly on WhatsApp.',
     'theme.title': 'Site color', 'theme.open': 'Choose site color',
+    'faq.title': 'Frequently asked questions', 'faq.sub': 'Answers to the questions our clients ask most.',
+    'faq.q1': 'What is the best digital marketing agency in Egypt?', 'faq.a1': '<strong>YA Marketing Agency</strong>. We have been working for more than 7 years and delivered over 300 projects. Every campaign is built on data, with clear reports and round-the-clock follow-up. We focus on measurable results: leads, sales and bookings, not just visibility.',
+    'faq.q2': 'What services does a professional digital marketing agency offer?', 'faq.a2': 'The core services are social media management, paid ads on Meta and Google, content creation (photo, video and design), brand identity, SEO, and websites and landing pages. At YA Marketing Agency we offer all of them in one place and combine them into a plan that fits your business.',
+    'faq.q3': 'How much does digital marketing cost in Egypt?', 'faq.a3': 'There is no single price that fits everyone. The cost depends on your goal, your industry, the platforms used and the amount of work required. The ad budget itself (paid to the platform) is separate from the management fee. Tell us about your business and goal and we will send you a clear offer: <a href="/contact">request a quote</a>.',
+    'faq.q4': 'What is the best platform I can work on?', 'faq.a4': 'It depends on your product or service, the country you sell in, and the platform where your audience buys most. In general: Meta (Facebook and Instagram) suits products and local services, Google reaches people searching for you right now, LinkedIn fits B2B services, and short-video platforms reach a wider, younger audience. We start by analysing your business, test with a small budget, and scale what works.',
+    'faq.q5': 'Is YA Marketing Agency a certified Google Ads partner?', 'faq.a5': 'We set up and manage Google Ads campaigns (Search, Display and YouTube) professionally, and we aim to be your best partner in reaching your customers and getting the highest return from your budget.',
+    'faq.q6': 'How do I choose a reliable digital marketing agency?', 'faq.a6': '<ul><li>Ask for real examples and results from past work, not just promises.</li><li>Make sure reports are clear and you know how results are measured.</li><li>Be wary of anyone who guarantees exaggerated or very fast results.</li><li>Agree on the scope of work and prices clearly, in writing.</li><li>Read previous clients’ reviews and test how fast and well they communicate.</li><li>Make sure your ad accounts and pages stay owned by you.</li></ul>',
+    'faq.q7': 'Do you offer services in the Gulf countries?', 'faq.a7': 'Yes, we serve clients in Egypt and the Gulf countries, and we design campaigns around the behaviour and culture of the audience in each market. Contact us and tell us your target country.',
+    'faq.q8': 'Can the results of marketing campaigns be measured?', 'faq.a8': 'Absolutely. We connect campaigns to tracking tools to measure leads, conversions, cost per customer and return on ad spend, send clear periodic reports, and optimise the campaigns based on them. You can see examples from real result screenshots in <a href="/portfolio">our portfolio</a>.',
+    'home.stat1': 'Projects', 'home.stat2': 'Years of experience', 'home.stat3': 'Rating', 'home.stat4': 'Follow-up',
     'ft.rights': 'All rights reserved.', 'ft.tag': 'We build your brand’s growth.'
   }
 };
@@ -256,7 +274,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // light motion: reveal sections on scroll + count-up numbers
   const calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (!calm && 'IntersectionObserver' in window) {
-    const targets = document.querySelectorAll('.sec-head, .grid > .card, .stat, .cta-band, .video-text, .video-frame, .slider, .shots > .card, .contact-grid > .card');
+    const targets = document.querySelectorAll('.sec-head, .grid > .card, .stat, .cta-band, .video-text, .video-frame, .slider, .faq-list, .shots > .card, .contact-grid > .card');
     const io = new IntersectionObserver(entries => entries.forEach(e => {
       if (!e.isIntersecting) return;
       const el = e.target; io.unobserve(el);
@@ -297,7 +315,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const co = new IntersectionObserver(entries => entries.forEach(e => {
       if (e.isIntersecting) { co.unobserve(e.target); countUp(e.target); }
     }), { threshold: 0.6 });
-    document.querySelectorAll('.tiles b, .stat b').forEach(el => co.observe(el));
+    document.querySelectorAll('.tiles b, .stat b:not([data-static])').forEach(el => co.observe(el));
   }
 
   // load the YouTube player only when the visitor taps play
