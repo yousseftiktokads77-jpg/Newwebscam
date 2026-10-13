@@ -66,6 +66,7 @@ const I18N = {
     'q.msg': 'تفاصيل طلبك (اختياري)', 'q.other': 'أخرى', 'q.send': 'اطلب عرض السعر', 'q.hello': 'مرحبًا YA Marketing Agency، أريد طلب عرض سعر:',
     'q.okt': 'تم استلام طلبك ✅', 'q.okp': 'سنتواصل معك قريبًا. وتقدر تكمل مباشرة على واتساب.', 'q.wa': 'أكمل على واتساب',
     'q.failt': 'تعذّر إرسال الطلب', 'q.failp': 'من فضلك أرسله لنا مباشرة عبر واتساب.',
+    'theme.title': 'لون الموقع', 'theme.open': 'اختيار لون الموقع',
     'ft.rights': 'جميع الحقوق محفوظة.', 'ft.tag': 'نصنع نمو علامتك التجارية.'
   },
   en: {
@@ -128,6 +129,7 @@ const I18N = {
     'q.msg': 'Request details (optional)', 'q.other': 'Other', 'q.send': 'Request a quote', 'q.hello': 'Hello YA Marketing Agency, I’d like to request a quote:',
     'q.okt': 'Your request was received ✅', 'q.okp': 'We’ll contact you soon. You can also continue directly on WhatsApp.', 'q.wa': 'Continue on WhatsApp',
     'q.failt': 'We couldn’t send your request', 'q.failp': 'Please send it to us directly on WhatsApp.',
+    'theme.title': 'Site color', 'theme.open': 'Choose site color',
     'ft.rights': 'All rights reserved.', 'ft.tag': 'We build your brand’s growth.'
   }
 };
@@ -158,6 +160,27 @@ function buildChrome() {
   document.getElementById('yr').textContent = new Date().getFullYear();
   document.getElementById('burger').onclick = () => document.getElementById('navlinks').classList.toggle('open');
   document.getElementById('langBtn').onclick = () => { lang = lang === 'ar' ? 'en' : 'ar'; try { localStorage.setItem('lang', lang); } catch (e) {} apply(); };
+  buildThemePicker();
+}
+
+function buildThemePicker() {
+  const TH = window.YA_THEME;
+  if (!TH) return;
+  const box = document.createElement('div');
+  box.className = 'theme-picker';
+  box.innerHTML = '<button class="theme-btn" type="button" data-i18n-title="theme.open">🎨</button>' +
+    '<div class="theme-panel"><h4 data-i18n="theme.title"></h4><div class="swatches">' +
+    Object.keys(TH.themes).map(id => {
+      const x = TH.themes[id];
+      return `<div class="swatch-wrap"><button class="swatch" type="button" data-theme-id="${id}" style="background:linear-gradient(135deg,${x.orange} 50%,${x.blue} 50%)"></button><span class="swatch-name" data-theme-name="${id}"></span></div>`;
+    }).join('') + '</div></div>';
+  document.body.appendChild(box);
+  const mark = () => box.querySelectorAll('.swatch').forEach(b => b.classList.toggle('on', b.dataset.themeId === TH.current()));
+  box.querySelector('.theme-btn').onclick = e => { e.stopPropagation(); box.classList.toggle('open'); };
+  box.querySelectorAll('.swatch').forEach(b => b.onclick = () => { TH.set(b.dataset.themeId); mark(); });
+  document.addEventListener('click', e => { if (!box.contains(e.target)) box.classList.remove('open'); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') box.classList.remove('open'); });
+  mark();
 }
 
 function apply() {
@@ -166,6 +189,11 @@ function apply() {
   document.querySelectorAll('[data-i18n]').forEach(el => { el.innerHTML = t(el.dataset.i18n); });
   document.querySelectorAll('[data-i18n-ph]').forEach(el => { el.placeholder = t(el.dataset.i18nPh); });
   document.getElementById('langBtn').textContent = lang === 'ar' ? 'EN' : 'عربي';
+  document.querySelectorAll('[data-i18n-title]').forEach(el => { el.title = t(el.dataset.i18nTitle); el.setAttribute('aria-label', el.title); });
+  if (window.YA_THEME) document.querySelectorAll('[data-theme-name]').forEach(el => {
+    const nm = window.YA_THEME.themes[el.dataset.themeName].name[lang === 'ar' ? 0 : 1];
+    el.textContent = nm; el.previousElementSibling.title = nm; el.previousElementSibling.setAttribute('aria-label', nm);
+  });
   document.querySelectorAll('[data-wa]').forEach(a => a.href = `https://wa.me/${CONFIG.whatsapp}`);
   document.querySelectorAll('[data-wa-cat]').forEach(a => a.href = `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(t('por.wamsg') + ' ' + t('f.' + a.dataset.waCat))}`);
   document.querySelectorAll('[data-link]').forEach(a => a.href = CONFIG[a.dataset.link]);
@@ -180,6 +208,25 @@ document.addEventListener('DOMContentLoaded', () => {
     fb.forEach(x => x.classList.remove('on')); b.classList.add('on');
     document.querySelectorAll('.work').forEach(w => w.style.display = (b.dataset.f === 'all' || w.dataset.cat === b.dataset.f) ? '' : 'none');
   });
+  // reading-progress bar and header shadow
+  const bar = document.createElement('div');
+  bar.className = 'progress';
+  document.body.appendChild(bar);
+  const hdr = document.querySelector('.site-header');
+  let ticking = false;
+  const onScroll = () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.width = (h > 0 ? Math.min(100, (window.scrollY / h) * 100) : 0) + '%';
+      if (hdr) hdr.classList.toggle('scrolled', window.scrollY > 10);
+      ticking = false;
+    });
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
   // reviews slider (scroll-snap + arrows + gentle autoplay)
   const track = document.querySelector('.slider .track');
   if (track) {
@@ -220,6 +267,11 @@ document.addEventListener('DOMContentLoaded', () => {
       if (el.getBoundingClientRect().top < window.innerHeight * 0.92) return;
       const i = [...el.parentElement.children].indexOf(el);
       el.style.transitionDelay = (i % 4) * 90 + 'ms';
+      if (window.innerWidth > 860 && el.matches('.video-text, .video-frame')) {
+        const rtl = document.documentElement.dir === 'rtl';
+        const side = (el.matches('.video-text') ? 1 : -1) * (rtl ? 1 : -1);
+        el.style.setProperty('--tx', side * 44 + 'px'); el.style.setProperty('--ty', '0px');
+      }
       el.classList.add('reveal'); io.observe(el);
     });
     const countUp = el => {
