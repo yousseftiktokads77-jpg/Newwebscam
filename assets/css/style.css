@@ -223,3 +223,17 @@ form .btn{margin-top:18px;width:100%;justify-content:center}
 @media(prefers-reduced-motion:reduce){.progress{display:none}}
 
 body{overflow-x:clip}
+
+/* FAQ */
+.faq-list{max-width:860px;margin:0 auto;display:grid;gap:14px}
+.faq-item{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;transition:border-color .2s}
+.faq-item[open]{border-color:var(--orange)}
+.faq-item summary{cursor:pointer;list-style:none;padding:18px 22px;font-weight:800;color:var(--navy);display:flex;justify-content:space-between;align-items:center;gap:16px}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{content:"+";flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--soft);color:var(--orange);font-size:1.3rem;font-weight:800;transition:transform .25s,background .25s}
+.faq-item[open] summary::after{content:"\2212";background:var(--orange);color:#fff;transform:rotate(180deg)}
+.faq-a{padding:0 22px 20px;color:var(--muted);line-height:1.9}
+.faq-a ul{padding-inline-start:20px;margin-top:4px}
+.faq-a li{margin-bottom:4px}
+.faq-a a{color:var(--blue);font-weight:700;text-decoration:underline}
+@media(prefers-reduced-motion:no-preference){.faq-item[open] .faq-a{animation:rise .35s ease both}}
