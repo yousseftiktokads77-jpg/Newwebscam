@@ -69,10 +69,10 @@ const I18N = {
     'faq.title': 'الأسئلة الشائعة', 'faq.sub': 'إجابات على أكثر الأسئلة التي يسألها عملاؤنا.',
     'faq.q1': 'ما هي أفضل شركة تسويق إلكتروني في مصر؟', 'faq.a1': '<strong>YA Marketing Agency</strong>. نعمل منذ أكثر من 7 سنوات وأنجزنا أكثر من 300 مشروع، ونبني كل حملة على البيانات مع تقارير واضحة ومتابعة على مدار الساعة. نركّز على نتائج قابلة للقياس من عملاء محتملين ومبيعات وحجوزات، وليس مجرد ظهور.',
     'faq.q2': 'ما الخدمات التي تقدمها شركة تسويق إلكتروني احترافية؟', 'faq.a2': 'تشمل الخدمات الأساسية: إدارة السوشيال ميديا، والإعلانات الممولة على ميتا وجوجل، وصناعة المحتوى من تصوير وفيديو وتصميم، والهوية البصرية، وتحسين محركات البحث SEO، وتصميم المواقع وصفحات الهبوط. في YA Marketing Agency نقدّم هذه الخدمات في مكان واحد ونجمعها في خطة تناسب نشاطك.',
-    'faq.q3': 'كم تكلفة التسويق الإلكتروني في مصر؟', 'faq.a3': 'لا يوجد سعر ثابت يناسب الجميع. تعتمد التكلفة على هدفك ومجال نشاطك والمنصات المستخدمة وحجم العمل المطلوب. وميزانية الإعلانات نفسها (التي تُدفع للمنصة) منفصلة عن أتعاب الإدارة. أخبرنا بنشاطك وهدفك وسنرسل لك عرضًا واضحًا: <a href="/contact">اطلب عرض سعر</a>.',
-    'faq.q4': 'ما أفضل منصة يمكنني العمل عليها؟', 'faq.a4': 'تتحدد حسب منتجك أو خدمتك، والدولة التي ستبيع فيها، والمنصة التي يشتري منها جمهورك أكثر. بشكل عام: ميتا (فيسبوك وإنستجرام) مناسبة للمنتجات والخدمات المحلية، وجوجل لمن يبحث عن منتجك الآن، ولينكدإن لخدمات الشركات (B2B)، ومنصات الفيديو القصير للوصول لجمهور أوسع وأصغر سنًا. نبدأ بتحليل نشاطك، ثم نختبر بميزانية صغيرة ونكبّر ما ينجح.',
+    'faq.q3': 'كم تكلفة التسويق الإلكتروني في مصر؟', 'faq.a3': 'لا يوجد سعر ثابت يناسب الجميع. تعتمد التكلفة على هدفك ومجال نشاطك والمنصات المستخدمة وحجم العمل المطلوب. وميزانية الإعلانات نفسها (التي تُدفع للمنصة) منفصلة عن أتعاب الإدارة. أخبرنا بنشاطك وهدفك وسنرسل لك عرضًا واضحًا: <a href="/contact">اطلب عرض سعر</a>. للتفاصيل اقرأ: <a href=\"/blog/cost-of-digital-marketing-in-egypt\">كم تكلفة التسويق الإلكتروني في مصر؟</a>.',
+    'faq.q4': 'ما أفضل منصة يمكنني العمل عليها؟', 'faq.a4': 'تتحدد حسب منتجك أو خدمتك، والدولة التي ستبيع فيها، والمنصة التي يشتري منها جمهورك أكثر. بشكل عام: ميتا (فيسبوك وإنستجرام) مناسبة للمنتجات والخدمات المحلية، وجوجل لمن يبحث عن منتجك الآن، ولينكدإن لخدمات الشركات (B2B)، ومنصات الفيديو القصير للوصول لجمهور أوسع وأصغر سنًا. نبدأ بتحليل نشاطك، ثم نختبر بميزانية صغيرة ونكبّر ما ينجح. للتفاصيل اقرأ: <a href=\"/blog/best-advertising-platform-for-your-business\">ما أفضل منصة إعلانية لنشاطك؟</a>.',
     'faq.q5': 'هل YA Marketing Agency شريك Google Ads معتمد؟', 'faq.a5': 'نعم، YA Marketing Agency شريك Google Ads معتمد (Google Partner). نتولى إعداد وإدارة حملات Google Ads (البحث والشبكة الإعلانية ويوتيوب) باحتراف، ونحرص أن نكون شريكك الأفضل في الوصول لعملائك وتحقيق أعلى عائد من ميزانيتك.',
-    'faq.q6': 'كيف أختار شركة تسويق إلكتروني موثوقة؟', 'faq.a6': '<ul><li>اطلب أمثلة ونتائج حقيقية لأعمال سابقة، وليس وعودًا فقط.</li><li>تأكد من وضوح التقارير وطريقة قياس النتائج.</li><li>احذر ممن يضمن نتائج مبالغًا فيها أو سريعة جدًا.</li><li>اتفق على نطاق العمل والأسعار بشكل واضح ومكتوب.</li><li>اقرأ آراء العملاء السابقين، وجرّب سرعة وجودة التواصل.</li><li>احرص أن تبقى حسابات الإعلانات والصفحات ملكًا لك.</li></ul>',
+    'faq.q6': 'كيف أختار شركة تسويق إلكتروني موثوقة؟', 'faq.a6': '<ul><li>اطلب أمثلة ونتائج حقيقية لأعمال سابقة، وليس وعودًا فقط.</li><li>تأكد من وضوح التقارير وطريقة قياس النتائج.</li><li>احذر ممن يضمن نتائج مبالغًا فيها أو سريعة جدًا.</li><li>اتفق على نطاق العمل والأسعار بشكل واضح ومكتوب.</li><li>اقرأ آراء العملاء السابقين، وجرّب سرعة وجودة التواصل.</li><li>احرص أن تبقى حسابات الإعلانات والصفحات ملكًا لك.</li></ul> للتفاصيل اقرأ: <a href=\"/blog/how-to-choose-reliable-digital-marketing-agency\">كيف تختار شركة تسويق إلكتروني موثوقة؟</a>.',
     'faq.q7': 'هل تقدمون خدمات في دول الخليج؟', 'faq.a7': 'نعم، نقدّم حملات إعلانية في دول الخليج مهما كان مجال نشاطك، ونصمّم الحملات حسب سلوك الجمهور وثقافته في كل سوق. تواصل معنا وأخبرنا بالدولة المستهدفة.',
     'faq.q8': 'هل يمكن قياس نتائج الحملات التسويقية؟', 'faq.a8': 'بالتأكيد. نربط الحملات بأدوات التتبع لنقيس عدد العملاء المحتملين والتحويلات وتكلفة كل عميل وعائد الإنفاق الإعلاني، ونرسل تقارير دورية واضحة ونحسّن الحملات بناءً عليها. يمكنك رؤية أمثلة من لقطات النتائج الحقيقية في <a href="/portfolio">معرض أعمالنا</a>.',
     'home.stat1': 'مشروع', 'home.stat2': 'سنوات خبرة', 'home.stat3': 'تقييم', 'home.stat4': 'متابعة',
@@ -102,6 +102,7 @@ const I18N = {
     'seo.d.portfolio': 'لقطات حقيقية من نتائج حملات إعلانية نفذتها YA Marketing Agency، وحملات للعقارات وعيادات التجميل والأسنان والمساج والملابس وشركات التقسيط.',
     'seo.t.contact': 'اطلب عرض سعر تسويق إلكتروني | YA Marketing Agency',
     'seo.d.contact': 'اطلب عرض سعر لخدمات التسويق الإلكتروني والإعلانات الممولة من YA Marketing Agency، أو تواصل معنا مباشرة عبر واتساب.',
+    'art.title': 'مقالات تهمّك',
     'ft.rights': 'جميع الحقوق محفوظة.', 'ft.tag': 'نصنع نمو علامتك التجارية.'
   },
   en: {
@@ -200,6 +201,7 @@ const I18N = {
     'seo.d.portfolio': 'Real screenshots of ad campaign results by YA Marketing Agency, plus campaigns for real estate, beauty and dental clinics, spas, clothing and installment companies.',
     'seo.t.contact': 'Request a Digital Marketing Quote | YA Marketing Agency',
     'seo.d.contact': 'Request a quote for digital marketing and paid advertising services from YA Marketing Agency, or contact us directly on WhatsApp.',
+    'art.title': 'Articles (in Arabic)',
     'ft.rights': 'All rights reserved.', 'ft.tag': 'We build your brand’s growth.'
   }
 };
@@ -267,10 +269,11 @@ function apply() {
   document.querySelectorAll('[data-wa]').forEach(a => a.href = `https://wa.me/${CONFIG.whatsapp}`);
   document.querySelectorAll('[data-wa-cat]').forEach(a => a.href = `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(t('por.wamsg') + ' ' + t('f.' + a.dataset.waCat))}`);
   document.querySelectorAll('[data-link]').forEach(a => a.href = CONFIG[a.dataset.link]);
-  const seo = ['index', 'services', 'portfolio', 'contact'].includes(page) ? page : 'index';
-  document.title = t('seo.t.' + seo);
-  [['meta[name="description"]', 'seo.d.'], ['meta[property="og:title"]', 'seo.t.'], ['meta[property="og:description"]', 'seo.d.']]
-    .forEach(([sel, k]) => { const m = document.querySelector(sel); if (m) m.content = t(k + seo); });
+  if (['index', 'services', 'portfolio', 'contact'].includes(page)) {
+    document.title = t('seo.t.' + page);
+    [['meta[name="description"]', 'seo.d.'], ['meta[property="og:title"]', 'seo.t.'], ['meta[property="og:description"]', 'seo.d.']]
+      .forEach(([sel, k]) => { const m = document.querySelector(sel); if (m) m.content = t(k + page); });
+  }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
