@@ -261,3 +261,17 @@ body{overflow-x:clip}
 .related h3{font-size:1.05rem;color:var(--navy)}
 .related ul{list-style:none;padding:0;margin:8px 0 0}
 .related li{margin:6px 0}
+
+/* blog index, breadcrumb, link under the home strip */
+.all-articles{text-align:center;margin:14px 0 0}
+.all-articles a{font-weight:700;color:var(--blue);text-decoration:underline;text-underline-offset:3px}
+.breadcrumb{font-size:.9rem;color:var(--muted);margin-bottom:6px}
+.breadcrumb a{color:var(--muted);font-weight:600;text-decoration:none}
+.breadcrumb a:hover{color:var(--blue)}
+.post-list{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;max-width:980px;margin:0 auto}
+.post{display:flex;flex-direction:column;gap:8px;padding:22px;background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);transition:transform .2s,border-color .2s}
+.post:hover{transform:translateY(-4px);border-color:var(--orange)}
+.post h2{font-size:1.15rem;color:var(--navy);line-height:1.6}
+.post p{color:var(--muted);font-size:.97rem;line-height:1.8;flex:1}
+.post span{color:var(--orange);font-weight:800}
+@media(max-width:700px){.post-list{grid-template-columns:1fr}}

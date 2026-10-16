@@ -19,7 +19,7 @@ const { JSDOM } = require('jsdom');
 const root = path.join(__dirname, '..');
 const pages = { 'index.html': '/', 'services.html': '/services', 'portfolio.html': '/portfolio', 'contact.html': '/contact' };
 // every article in /blog is a page too
-for (const f of fs.readdirSync(path.join(root, 'blog')).filter(f => f.endsWith('.html'))) pages['blog/' + f] = '/blog/' + f.replace(/\.html$/, '');
+for (const f of fs.readdirSync(path.join(root, 'blog')).filter(f => f.endsWith('.html'))) pages['blog/' + f] = f === 'index.html' ? '/blog/' : '/blog/' + f.replace(/\.html$/, '');
 const theme = fs.readFileSync(path.join(root, 'assets/js/theme.js'), 'utf8');
 const main = fs.readFileSync(path.join(root, 'assets/js/main.js'), 'utf8');
 
