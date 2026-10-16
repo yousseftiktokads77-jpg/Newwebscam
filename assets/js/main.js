@@ -103,6 +103,7 @@ const I18N = {
     'seo.t.contact': 'اطلب عرض سعر تسويق إلكتروني | YA Marketing Agency',
     'seo.d.contact': 'اطلب عرض سعر لخدمات التسويق الإلكتروني والإعلانات الممولة من YA Marketing Agency، أو تواصل معنا مباشرة عبر واتساب.',
     'art.title': 'مقالات تهمّك',
+    'art.all': 'كل المقالات', 'nav.blog': 'المقالات',
     'ft.rights': 'جميع الحقوق محفوظة.', 'ft.tag': 'نصنع نمو علامتك التجارية.'
   },
   en: {
@@ -202,6 +203,7 @@ const I18N = {
     'seo.t.contact': 'Request a Digital Marketing Quote | YA Marketing Agency',
     'seo.d.contact': 'Request a quote for digital marketing and paid advertising services from YA Marketing Agency, or contact us directly on WhatsApp.',
     'art.title': 'Articles (in Arabic)',
+    'art.all': 'All articles', 'nav.blog': 'Articles',
     'ft.rights': 'All rights reserved.', 'ft.tag': 'We build your brand’s growth.'
   }
 };
@@ -209,7 +211,8 @@ const I18N = {
 let lang = 'ar';
 try { lang = localStorage.getItem('lang') || 'ar'; } catch (e) {}
 const t = k => (I18N[lang] && I18N[lang][k]) || k;
-const page = (location.pathname.split('/').pop() || 'index').replace(/\.html$/, '');
+const pathParts = location.pathname.replace(/\.html$/, '').split('/').filter(Boolean);
+const page = pathParts.length ? pathParts[pathParts.length - 1] : 'index';
 
 function buildChrome() {
   const links = [['/', 'nav.home', 'index'], ['/portfolio', 'nav.portfolio', 'portfolio'], ['/services', 'nav.services', 'services'], ['/contact', 'nav.contact', 'contact']];
@@ -225,7 +228,7 @@ function buildChrome() {
   document.getElementById('site-footer').innerHTML = `
   <footer class="site-footer"><div class="container">
     <div class="foot"><div><a class="brand" href="/"><img src="/assets/img/logo.png" alt="" width="40" height="40"><span data-i18n="brand"></span></a><p data-i18n="ft.tag" style="margin-top:8px"></p></div>
-    <div class="foot-links">${links.map(([h, k]) => `<a href="${h}" data-i18n="${k}"></a>`).join('')}</div>
+    <div class="foot-links">${links.map(([h, k]) => `<a href="${h}" data-i18n="${k}"></a>`).join('')}<a href="/blog/" data-i18n="nav.blog"></a></div>
     <div class="foot-links"><a href="${CONFIG.instagram}" target="_blank" rel="noopener">Instagram</a><a href="${CONFIG.facebook}" target="_blank" rel="noopener">Facebook</a></div></div>
     <p class="copy">© <span id="yr"></span> YA Marketing Agency — <span data-i18n="ft.rights"></span></p></div></footer>
   <a class="wa-float" href="https://wa.me/${CONFIG.whatsapp}" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>`;
