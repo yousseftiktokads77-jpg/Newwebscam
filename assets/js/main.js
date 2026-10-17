@@ -3,7 +3,8 @@ const CONFIG = {
   whatsapp: '201147049045', // +201147049045 — الصيغة الدولية بدون + / international format, no +
   instagram: 'https://www.instagram.com/yaagencyofficial/',
   facebook: 'https://web.facebook.com/yaagencyofficial',
-  maps: 'https://maps.app.goo.gl/1onmcDuG1LbRAeMo9'
+  maps: 'https://maps.app.goo.gl/1onmcDuG1LbRAeMo9',
+  snapPixel: '529588f7-5384-469a-88b0-9bcb2dae9952' // Snapchat Ads Pixel ID (looks like xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx); leave empty to disable
 };
 
 const I18N = {
@@ -217,6 +218,30 @@ const t = k => (I18N[lang] && I18N[lang][k]) || k;
 const pathParts = location.pathname.replace(/\.html$/, '').split('/').filter(Boolean);
 const page = pathParts.length ? pathParts[pathParts.length - 1] : 'index';
 
+// Snapchat Ads pixel. Calls are queued right away and the Snap script itself loads after the page is idle,
+// so it never slows the first paint. Skipped while the pages are pre-rendered (tools/prerender.js).
+function setupSnapPixel() {
+  const id = CONFIG.snapPixel;
+  if (!id || window.__PRERENDER || window.snaptr) return;
+  const q = window.snaptr = function () { q.handleRequest ? q.handleRequest.apply(q, arguments) : q.queue.push(arguments); };
+  q.queue = [];
+  q('init', id);
+  q('track', 'PAGE_VIEW');
+  const inject = () => {
+    const s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://sc-static.net/scevent.min.js';
+    document.head.appendChild(s);
+  };
+  const later = () => (window.requestIdleCallback ? window.requestIdleCallback(inject, { timeout: 3000 }) : setTimeout(inject, 1500));
+  if (document.readyState === 'complete') later(); else window.addEventListener('load', later);
+  // a tap on any WhatsApp link counts as a custom event (set it up as a conversion in Snap Events Manager)
+  document.addEventListener('click', e => {
+    const a = e.target.closest && e.target.closest('a[href^="https://wa.me/"]');
+    if (a && window.snaptr) window.snaptr('track', 'CUSTOM_EVENT_1');
+  });
+}
+
 function buildChrome() {
   const links = [['/', 'nav.home', 'index'], ['/portfolio', 'nav.portfolio', 'portfolio'], ['/services', 'nav.services', 'services'], ['/contact', 'nav.contact', 'contact']];
   document.getElementById('site-header').innerHTML = `
@@ -283,6 +308,7 @@ function apply() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  setupSnapPixel();
   buildChrome(); apply();
   // portfolio filters
   const fb = document.querySelectorAll('.filters button');
@@ -417,6 +443,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const r = await fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(d).toString() });
       ok = r.ok;
     } catch (err) { ok = false; }
+    if (ok && window.snaptr) window.snaptr('track', 'SIGN_UP');
     qf.hidden = true;
     document.querySelectorAll('[data-qwa]').forEach(a => a.href = wa);
     document.getElementById(ok ? 'quoteOk' : 'quoteFail').hidden = false;

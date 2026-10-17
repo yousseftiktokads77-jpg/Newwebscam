@@ -31,6 +31,7 @@ for (const [file, urlPath] of Object.entries(pages)) {
   const html = fs.readFileSync(path.join(root, file), 'utf8');
   const dom = new JSDOM(html, { url: 'http://localhost' + urlPath, runScripts: 'outside-only', pretendToBeVisual: true });
   const { window } = dom;
+  window.__PRERENDER = true; // tells main.js not to start third-party pixels while pre-rendering
   window.matchMedia = () => ({ matches: false, addEventListener() {}, removeEventListener() {} });
   window.scrollTo = () => {};
   window.eval(theme);
