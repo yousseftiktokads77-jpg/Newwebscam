@@ -107,6 +107,7 @@ const I18N = {
     'art.title': 'مقالات تهمّك',
     'art.all': 'كل المقالات', 'nav.blog': 'المقالات',
     'ind.title': 'مجالات نتخصص فيها', 'ind.more': 'تعرّف أكثر ←', 'con.map': 'موقعنا على خرائط جوجل',
+    'nav.privacy': 'سياسة الخصوصية',
     'ft.rights': 'جميع الحقوق محفوظة.', 'ft.tag': 'نصنع نمو علامتك التجارية.'
   },
   en: {
@@ -208,6 +209,7 @@ const I18N = {
     'art.title': 'Articles (in Arabic)',
     'art.all': 'All articles', 'nav.blog': 'Articles',
     'ind.title': 'Industries we specialise in (pages in Arabic)', 'ind.more': 'Learn more →', 'con.map': 'Find us on Google Maps',
+    'nav.privacy': 'Privacy Policy',
     'ft.rights': 'All rights reserved.', 'ft.tag': 'We build your brand’s growth.'
   }
 };
@@ -256,7 +258,7 @@ function buildChrome() {
   document.getElementById('site-footer').innerHTML = `
   <footer class="site-footer"><div class="container">
     <div class="foot"><div><a class="brand" href="/"><img src="/assets/img/logo.png" alt="" width="40" height="40"><span data-i18n="brand"></span></a><p data-i18n="ft.tag" style="margin-top:8px"></p></div>
-    <div class="foot-links">${links.map(([h, k]) => `<a href="${h}" data-i18n="${k}"></a>`).join('')}<a href="/blog/" data-i18n="nav.blog"></a></div>
+    <div class="foot-links">${links.map(([h, k]) => `<a href="${h}" data-i18n="${k}"></a>`).join('')}<a href="/blog/" data-i18n="nav.blog"></a><a href="/privacy" data-i18n="nav.privacy"></a></div>
     <div class="foot-links"><a href="${CONFIG.instagram}" target="_blank" rel="noopener">Instagram</a><a href="${CONFIG.facebook}" target="_blank" rel="noopener">Facebook</a><a href="${CONFIG.maps}" target="_blank" rel="noopener">Google Maps</a></div></div>
     <p class="copy">© <span id="yr"></span> YA Marketing Agency — <span data-i18n="ft.rights"></span></p></div></footer>
   <a class="wa-float" href="https://wa.me/${CONFIG.whatsapp}" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>`;

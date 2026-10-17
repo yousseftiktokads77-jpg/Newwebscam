@@ -17,7 +17,7 @@ const path = require('path');
 const { JSDOM } = require('jsdom');
 
 const root = path.join(__dirname, '..');
-const pages = { 'index.html': '/', 'services.html': '/services', 'portfolio.html': '/portfolio', 'contact.html': '/contact' };
+const pages = { 'index.html': '/', 'services.html': '/services', 'portfolio.html': '/portfolio', 'contact.html': '/contact', 'privacy.html': '/privacy' };
 // every article in /blog and every page in /industries is a page too
 for (const dir of ['blog', 'industries']) {
   for (const f of fs.readdirSync(path.join(root, dir)).filter(f => f.endsWith('.html'))) {
