@@ -4,7 +4,7 @@ const CONFIG = {
   instagram: 'https://www.instagram.com/yaagencyofficial/',
   facebook: 'https://web.facebook.com/yaagencyofficial',
   maps: 'https://maps.app.goo.gl/1onmcDuG1LbRAeMo9',
-  snapPixel: '' // Snapchat Ads Pixel ID (looks like xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx); leave empty to disable
+  snapPixel: '529588f7-5384-469a-88b0-9bcb2dae9952' // Snapchat Ads Pixel ID (looks like xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx); leave empty to disable
 };
 
 const I18N = {
