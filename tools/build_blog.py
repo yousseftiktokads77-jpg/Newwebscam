@@ -75,27 +75,56 @@ def breadcrumb_ld(items):
             'itemListElement': [{'@type': 'ListItem', 'position': i + 1, 'name': n, 'item': u} for i, (n, u) in enumerate(items)]}
 
 
+def with_faq(body, faq):
+    """Puts the visible FAQ just before the closing section (or at the end)."""
+    if not faq:
+        return body
+    block = '<h2>أسئلة شائعة</h2>' + ''.join(f'<h3 class="q">{html.escape(q)}</h3><p>{html.escape(ans)}</p>' for q, ans in faq)
+    marker = '<h2>الخلاصة</h2>'
+    return body.replace(marker, block + marker, 1) if marker in body else body + block
+
+
+def with_toc(body):
+    """Gives every h2 an id and adds a short table of contents after the first paragraph."""
+    heads = []
+
+    def tag(m):
+        heads.append(re.sub(r'<[^>]+>', '', m.group(1)))
+        return f'<h2 id="s{len(heads)}">{m.group(1)}</h2>'
+
+    body = re.sub(r'<h2>(.*?)</h2>', tag, body, flags=re.S)
+    if len(heads) < 5:
+        return body
+    toc = '<details class="toc"><summary>في هذا المقال</summary><ol>' + ''.join(
+        f'<li><a href="#s{i + 1}">{html.escape(h)}</a></li>' for i, h in enumerate(heads)) + '</ol></details>'
+    return body.replace('</p>', '</p>' + toc, 1)
+
+
 def article_page(a, arts):
     url = f"{D}/blog/{a['slug']}"
     art_ld = {'@context': 'https://schema.org', '@type': 'Article', 'headline': a['title'], 'description': a['desc'],
-              'inLanguage': 'ar', 'datePublished': a['date'], 'dateModified': a['date'], 'mainEntityOfPage': url,
+              'inLanguage': 'ar', 'datePublished': a['date'], 'dateModified': a.get('modified', a['date']), 'mainEntityOfPage': url,
               'image': f'{D}/assets/img/og.png',
               'author': {'@type': 'Organization', 'name': 'YA Marketing Agency', 'url': D + '/'},
               'publisher': {'@type': 'Organization', 'name': 'YA Marketing Agency',
                             'logo': {'@type': 'ImageObject', 'url': D + '/assets/img/logo.png'}}}
     bc = breadcrumb_ld([('الرئيسية', D + '/'), ('المقالات', D + '/blog/'), (a['h1'], url)])
+    body = with_toc(with_faq(a['body'], a.get('faq')))
+    faq_ld = {'@context': 'https://schema.org', '@type': 'FAQPage', 'inLanguage': 'ar', 'mainEntity': [
+        {'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': ans}} for q, ans in a.get('faq', [])]}
+    updated = f" · آخر تحديث {ar_date(a['modified'])}" if a.get('modified') else ''
     i = next(k for k, x in enumerate(arts) if x['slug'] == a['slug'])
     others = [arts[(i + k) % len(arts)] for k in range(1, min(5, len(arts)))]
     related = ''.join(f'<li><a href="/blog/{o["slug"]}">{html.escape(o["title"])}</a></li>' for o in others)
-    main = f'''<div class="page-hero"><div class="container"><h1>{html.escape(a['h1'])}</h1><p class="art-meta">YA Marketing Agency · {ar_date(a['date'])}</p></div></div>
+    main = f'''<div class="page-hero"><div class="container"><h1>{html.escape(a['h1'])}</h1><p class="art-meta">YA Marketing Agency · {ar_date(a['date'])}{updated}</p></div></div>
 <article class="container article" lang="ar" dir="rtl">
 <nav class="breadcrumb" aria-label="مسار التنقل"><a href="/">الرئيسية</a> / <a href="/blog/">المقالات</a> / <span>{html.escape(a['h1'])}</span></nav>
-{a['body']}
+{body}
 <aside class="art-cta"><h3>جاهز تطلق حملتك؟</h3><p>أخبرنا بنشاطك وهدفك وسنرسل لك عرضًا مناسبًا.</p><a class="btn btn-primary" href="/contact">اطلب عرض سعر</a></aside>
 <nav class="related" aria-label="مقالات أخرى"><h3>مقالات أخرى</h3><ul>{related}</ul></nav>
 </article>'''
     return PAGE.format(title=html.escape(a['title']), desc=html.escape(a['desc']), url=url, D=D, ogtype='article',
-                       schemas=ld(art_ld) + '\n' + ld(bc), main=main)
+                       schemas=ld(art_ld) + '\n' + ld(bc) + ('\n' + ld(faq_ld) if a.get('faq') else ''), main=main)
 
 
 def hub_page(arts):
