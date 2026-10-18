@@ -70,7 +70,7 @@ PAGE = '''<!doctype html>
 '''
 
 
-def page(i, titles):
+def page(i, titles, countries):
     url = f"{D}/industries/{i['slug']}"
     svc = {'@context': 'https://schema.org', '@type': 'Service', 'name': i['name'], 'serviceType': i['stype'],
            'description': i['desc'], 'url': url, 'inLanguage': 'ar',
@@ -80,6 +80,11 @@ def page(i, titles):
         {'@type': 'ListItem', 'position': 1, 'name': 'الرئيسية', 'item': D + '/'},
         {'@type': 'ListItem', 'position': 2, 'name': 'الخدمات', 'item': D + '/services'},
         {'@type': 'ListItem', 'position': 3, 'name': i['name'], 'item': url}]}
+    faq_ld = {'@context': 'https://schema.org', '@type': 'FAQPage', 'inLanguage': 'ar', 'mainEntity': [
+        {'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': a}} for q, a in i.get('faq', [])]}
+    secs = ''.join(f'<h2>{html.escape(h)}</h2>{b}' for h, b in i.get('sections', []))
+    cty = ''.join(f'<li><a href="/countries/{c["slug"]}">{html.escape(i["name"])} في {html.escape(c["name"])}</a></li>' for c in countries)
+    cty_block = f'<nav class="related" aria-label="الدول التي نخدمها"><h3>نخدم هذا المجال في دول الخليج</h3><ul>{cty}</ul></nav>' if cty else ''
     offer = ''.join(f'<li>{html.escape(x)}</li>' for x in i['offer'])
     steps = ''.join(f'<li><strong>{html.escape(t)}:</strong> {html.escape(x)}</li>' for t, x in i['steps'])
     tips = ''.join(f'<li>{html.escape(x)}</li>' for x in i['tips'])
@@ -91,6 +96,7 @@ def page(i, titles):
 <p>{html.escape(i['intro'])}</p>
 <h2>ماذا نقدّم لهذا المجال؟</h2>
 <ul>{offer}</ul>
+{secs}
 <h2>كيف نعمل؟</h2>
 <ol>{steps}</ol>
 <h2>نصائح سريعة</h2>
@@ -101,17 +107,20 @@ def page(i, titles):
 <p>شاهد لقطات حقيقية من نتائج حملاتنا في <a href="/portfolio">معرض أعمالنا</a>، وتعرّف على <a href="/services">كل خدماتنا</a>.</p>
 <aside class="art-cta"><h3>جاهز تطلق حملتك؟</h3><p>أخبرنا بنشاطك وهدفك وسنرسل لك عرضًا مناسبًا.</p><div class="art-cta-btns"><a class="btn btn-primary" href="/contact">اطلب عرض سعر</a><a class="btn btn-primary" data-wa-cat="{i['cat']}" target="_blank" rel="noopener" href="#">تواصل على واتساب</a></div></aside>
 <nav class="related" aria-label="مقالات تهمّك"><h3>مقالات تهمّك</h3><ul>{rel}</ul></nav>
+{cty_block}
 </article>'''
     return PAGE.format(title=html.escape(i['title']), desc=html.escape(i['desc']), url=url, D=D,
-                       schemas=ld(svc) + '\n' + ld(bc), main=main)
+                       schemas=ld(svc) + '\n' + ld(bc) + ('\n' + ld(faq_ld) if i.get('faq') else ''), main=main)
 
 
 def main():
     inds = json.loads(read('tools/industries.json'))
     titles = {a['slug']: a['title'] for a in json.loads(read('tools/articles.json'))}
+    cpath = os.path.join(ROOT, 'tools/countries.json')
+    countries = json.loads(read('tools/countries.json')) if os.path.exists(cpath) else []
     os.makedirs(os.path.join(ROOT, 'industries'), exist_ok=True)
     for i in inds:
-        write(f"industries/{i['slug']}.html", page(i, titles))
+        write(f"industries/{i['slug']}.html", page(i, titles, countries))
 
     sm = read('sitemap.xml')
     sm = re.sub(r'\s*<url><loc>https://yamarketing-eg\.com/industries/[^<]*</loc></url>', '', sm)
@@ -133,7 +142,7 @@ def main():
 
     # portfolio page: a "learn more" link on each industry card
     p = read('portfolio.html')
-    p = re.sub(r'<a class="more" href="/industries/[^"]*"[^>]*></a>', '', p)
+    p = re.sub(r'<a class="more" href="/industries/[^"]*"[^>]*>[^<]*</a>', '', p)
     for i in inds:
         pat = re.compile(r'(<article class="card work" data-cat="%s".*?<div class="goals">.*?</div>)' % re.escape(i['cat']), re.S)
         p, n = pat.subn(lambda m: m.group(1) + f'<a class="more" href="/industries/{i["slug"]}" data-i18n="ind.more"></a>', p, count=1)

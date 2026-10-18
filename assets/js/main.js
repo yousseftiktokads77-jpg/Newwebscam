@@ -106,7 +106,7 @@ const I18N = {
     'seo.d.contact': 'اطلب عرض سعر لخدمات التسويق الإلكتروني والإعلانات الممولة من YA Marketing Agency، أو تواصل معنا مباشرة عبر واتساب.',
     'art.title': 'مقالات تهمّك',
     'art.all': 'كل المقالات', 'nav.blog': 'المقالات',
-    'ind.title': 'مجالات نتخصص فيها', 'ind.more': 'تعرّف أكثر ←', 'con.map': 'موقعنا على خرائط جوجل',
+    'cty.title': 'دول الخليج التي نخدمها', 'ind.title': 'مجالات نتخصص فيها', 'ind.more': 'تعرّف أكثر ←', 'con.map': 'موقعنا على خرائط جوجل',
     'nav.privacy': 'سياسة الخصوصية',
     'ft.rights': 'جميع الحقوق محفوظة.', 'ft.tag': 'نصنع نمو علامتك التجارية.'
   },
@@ -208,7 +208,7 @@ const I18N = {
     'seo.d.contact': 'Request a quote for digital marketing and paid advertising services from YA Marketing Agency, or contact us directly on WhatsApp.',
     'art.title': 'Articles (in Arabic)',
     'art.all': 'All articles', 'nav.blog': 'Articles',
-    'ind.title': 'Industries we specialise in (pages in Arabic)', 'ind.more': 'Learn more →', 'con.map': 'Find us on Google Maps',
+    'cty.title': 'Gulf countries we serve (pages in Arabic)', 'ind.title': 'Industries we specialise in (pages in Arabic)', 'ind.more': 'Learn more →', 'con.map': 'Find us on Google Maps',
     'nav.privacy': 'Privacy Policy',
     'ft.rights': 'All rights reserved.', 'ft.tag': 'We build your brand’s growth.'
   }
