@@ -237,14 +237,14 @@ function setupSnapPixel() {
   };
   const later = () => (window.requestIdleCallback ? window.requestIdleCallback(inject, { timeout: 3000 }) : setTimeout(inject, 1500));
   if (document.readyState === 'complete') later(); else window.addEventListener('load', later);
-  // a tap on any WhatsApp link counts as a custom event (set it up as a conversion in Snap Events Manager)
+  // a tap on any WhatsApp link is sent as the PURCHASE event (no price is sent: a tap is a lead, not a sale)
   // taps within 2 seconds of the last counted one are ignored so a double tap is not counted twice
   let lastWa = 0;
   document.addEventListener('click', e => {
     const a = e.target.closest && e.target.closest('a[href^="https://wa.me/"]');
     if (!a || !window.snaptr || Date.now() - lastWa < 2000) return;
     lastWa = Date.now();
-    window.snaptr('track', 'CUSTOM_EVENT_1');
+    window.snaptr('track', 'PURCHASE');
   });
 }
 
