@@ -4,7 +4,9 @@ const CONFIG = {
   instagram: 'https://www.instagram.com/yaagencyofficial/',
   facebook: 'https://web.facebook.com/yaagencyofficial',
   maps: 'https://maps.app.goo.gl/1onmcDuG1LbRAeMo9',
-  snapPixel: '529588f7-5384-469a-88b0-9bcb2dae9952' // Snapchat Ads Pixel ID (looks like xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx); leave empty to disable
+  snapPixel: '529588f7-5384-469a-88b0-9bcb2dae9952', // Snapchat Ads Pixel ID (looks like xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx); leave empty to disable
+  // Google Ads tag: id is AW-xxxxxxxxxx; each label is the part after the slash in the conversion's send_to value (AW-xxxxxxxxxx/label); an empty label turns that conversion off
+  googleAds: { id: 'AW-18522476453', formLabel: 'jV9sCL3msqQdEKWfmoBF', whatsappLabel: '' }
 };
 
 const I18N = {
@@ -222,6 +224,29 @@ const page = pathParts.length ? pathParts[pathParts.length - 1] : 'index';
 
 // Snapchat Ads pixel. Calls are queued right away and the Snap script itself loads after the page is idle,
 // so it never slows the first paint. Skipped while the pages are pre-rendered (tools/prerender.js).
+function setupGoogleAds() {
+  const g = CONFIG.googleAds;
+  if (!g || !g.id || window.__PRERENDER || window.gtag) return;
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = function () { window.dataLayer.push(arguments); };
+  window.gtag('js', new Date());
+  window.gtag('config', g.id);
+  const inject = () => { const s = document.createElement('script'); s.async = true; s.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(g.id); document.head.appendChild(s); };
+  const later = () => (window.requestIdleCallback ? window.requestIdleCallback(inject, { timeout: 3000 }) : setTimeout(inject, 1500));
+  if (document.readyState === 'complete') later(); else window.addEventListener('load', later);
+  // a WhatsApp tap counts once per 2 seconds, like in the Snap pixel
+  let lastWa = 0;
+  document.addEventListener('click', e => {
+    const a = e.target.closest && e.target.closest('a[href^="https://wa.me/"]');
+    if (!a || Date.now() - lastWa < 2000) return;
+    lastWa = Date.now();
+    googleAdsConversion(g.whatsappLabel);
+  });
+}
+function googleAdsConversion(label) {
+  const g = CONFIG.googleAds;
+  if (g && g.id && label && window.gtag) window.gtag('event', 'conversion', { send_to: g.id + '/' + label });
+}
 function setupSnapPixel() {
   const id = CONFIG.snapPixel;
   if (!id || window.__PRERENDER || window.snaptr) return;
@@ -315,6 +340,7 @@ function apply() {
 
 document.addEventListener('DOMContentLoaded', () => {
   setupSnapPixel();
+  setupGoogleAds();
   buildChrome(); apply();
   // portfolio filters
   const fb = document.querySelectorAll('.filters button');
@@ -450,6 +476,7 @@ document.addEventListener('DOMContentLoaded', () => {
       ok = r.ok;
     } catch (err) { ok = false; }
     if (ok && window.snaptr) window.snaptr('track', 'SIGN_UP');
+    if (ok) googleAdsConversion(CONFIG.googleAds.formLabel);
     qf.hidden = true;
     document.querySelectorAll('[data-qwa]').forEach(a => a.href = wa);
     document.getElementById(ok ? 'quoteOk' : 'quoteFail').hidden = false;
