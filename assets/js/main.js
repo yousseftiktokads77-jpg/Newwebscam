@@ -6,7 +6,7 @@ const CONFIG = {
   maps: 'https://maps.app.goo.gl/1onmcDuG1LbRAeMo9',
   snapPixel: '529588f7-5384-469a-88b0-9bcb2dae9952', // Snapchat Ads Pixel ID (looks like xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx); leave empty to disable
   // Google Ads tag: id is AW-xxxxxxxxxx; each label is the part after the slash in the conversion's send_to value (AW-xxxxxxxxxx/label); an empty label turns that conversion off
-  googleAds: { id: 'AW-18522476453', formLabel: 'jV9sCL3msqQdEKWfmoBF', whatsappLabel: '' }
+  googleAds: { id: 'AW-18522476453', formLabel: 'jV9sCL3msqQdEKWfmoBF', whatsappLabel: 'udf0CIXis6QdEKWfmoBF' }
 };
 
 const I18N = {
